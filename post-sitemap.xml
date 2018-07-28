@@ -7,64 +7,8 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/2017/09/divide-a-list-to-lists-of-n-size-in-Java-8/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2017/09/why-grails-package-exexutes-config-groovy/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2017/10/groovy-script-closure-does-not-modify-field-annotated-variable/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2018/05/count-frequency-of-a-digit-in-a-factorial-of-number-using-Haskell/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2018/06/groovy-split-string-and-avoid-getting-index-out-of-bounds-exception/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2018/06/ratpack-mocking-Session-object-in-GroovyRequestFixture-test/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/2018/06/ratpack-register-session-module-in-handler-unit-test/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/2018/07/365-consecutive-days-on-stack-overflow/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
+        <lastmod>2018-07-18T07:25:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,7 +16,63 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/2018/07/how-to-name-groovy-script-file/</loc>
-        <lastmod>2018-07-28T10:21:07.397Z</lastmod>
+        <lastmod>2018-07-10T10:05:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2018/06/groovy-split-string-and-avoid-getting-index-out-of-bounds-exception/</loc>
+        <lastmod>2018-06-30T20:48:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2018/06/ratpack-register-session-module-in-handler-unit-test/</loc>
+        <lastmod>2018-06-26T20:55:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2018/06/ratpack-mocking-Session-object-in-GroovyRequestFixture-test/</loc>
+        <lastmod>2018-06-24T09:59:57.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2018/05/count-frequency-of-a-digit-in-a-factorial-of-number-using-Haskell/</loc>
+        <lastmod>2018-05-26T15:19:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2017/10/groovy-script-closure-does-not-modify-field-annotated-variable/</loc>
+        <lastmod>2017-10-08T07:39:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2017/09/why-grails-package-exexutes-config-groovy/</loc>
+        <lastmod>2017-09-30T05:18:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/2017/09/divide-a-list-to-lists-of-n-size-in-Java-8/</loc>
+        <lastmod>2017-09-09T08:19:29.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
