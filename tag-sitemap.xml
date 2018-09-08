@@ -30,13 +30,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/metaprogramming/</loc>
-        <lastmod>2017-10-08T07:39:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/haskell/</loc>
         <lastmod>2018-05-26T15:19:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -101,7 +94,14 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2018-09-03T09:28:05.000Z</lastmod>
+        <lastmod>2018-09-08T21:22:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/metaprogramming/</loc>
+        <lastmod>2018-09-08T21:22:19.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
