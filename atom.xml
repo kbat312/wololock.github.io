@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://e.printstacktrace.blog/"/>
-  <updated>2018-10-03T21:28:49.000Z</updated>
+  <updated>2018-10-24T07:00:48.000Z</updated>
   <id>https://e.printstacktrace.blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to avoid &quot;No tests were found&quot; when using JUnit 5 with Groovy?</title>
+    <link href="https://e.printstacktrace.blog/2018/10/how-to-avoid-no-tests-were-found-when-using-junit5-with-groovy/"/>
+    <id>https://e.printstacktrace.blog/2018/10/how-to-avoid-no-tests-were-found-when-using-junit5-with-groovy/</id>
+    <published>2018-10-24T07:00:48.000Z</published>
+    <updated>2018-10-24T07:00:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="paragraph"><p>In this short blog post I would like to explain how to avoid popular mistake when you write your first JUnit 5 test case in Groovy.</p></div><a id="more"></a><div class="sect1"><h2 id="the-example">The example</h2><div class="sectionbody"><div class="paragraph"><p>Let&#8217;s start with the example. Here is our <code>build.gradle</code> file that adds JUnit 5 dependency:</p></div><div class="listingblock"><div class="title">Listing 1. build.gradle</div><div class="content"><pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">plugins {    id 'groovy'    id 'idea'}repositories {jcenter()}dependencies {    compile localGroovy()    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'}test {    useJUnitPlatform()}</code></pre></div></div><div class="paragraph"><p>And here is our test class:</p></div><div class="listingblock"><div class="title">Listing 2. src/test/groovy/UnitTest.groovy</div><div class="content"><pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import org.junit.jupiter.api.Testclass UnitTest {    @Test    def shouldThrowAnException() {        throw new RuntimeException()    }}</code></pre></div></div><div class="paragraph"><p>This test does nothing, but it&#8217;s fine. We just want to execute this test.</p></div></div></div><div class="sect1"><h2 id="the-problem">The problem</h2><div class="sectionbody"><div class="paragraph"><p>Let&#8217;s see what happens when we try to run this test:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% gradle testBUILD SUCCESSFUL in 1s2 actionable tasks: 2 executed</code></pre></div></div><div class="paragraph"><p>Nothing happened. When we try to execute this test inside IntelliJ IDEA, we will see something like this:</p></div><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/groovy-junit5-def-mistake.png"><img src="/images/groovy-junit5-def-mistake.png" alt="groovy junit5 def mistake"></a></div></div><div class="paragraph"><p>What&#8217;s wrong?</p></div></div></div><div class="sect1"><h2 id="the-solution">The solution</h2><div class="sectionbody"><div class="paragraph"><p>The problem we shown above is caused by a single <code>def</code> keyword we used in <code>shouldThrowAnException</code> prototype. This is common mistake, made very often by people who have experience with Spock Framework (which tolerates <code>def</code> btw).</p></div><div class="paragraph"><p>So, what is the problem with <code>def</code> keyword? Firstly, let&#8217;s take a look at the decompiled class:</p></div><div class="listingblock"><div class="title">Listing 3. Decompiled UnitTest.class file</div><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">//// Source code recreated from a .class file by IntelliJ IDEA// (powered by Fernflower decompiler)//import groovy.lang.GroovyObject;import groovy.lang.MetaClass;import org.codehaus.groovy.runtime.callsite.CallSite;import org.junit.jupiter.api.Test;public class UnitTest implements GroovyObject {    public UnitTest() {        CallSite[] var1 = $getCallSiteArray();        super();        MetaClass var2 = this.$getStaticMetaClass();        this.metaClass = var2;    }    @Test    public Object shouldThrowAnException() {        CallSite[] var1 = $getCallSiteArray();        throw (Throwable)var1[0].callConstructor(RuntimeException.class);    }}</code></pre></div></div><div class="paragraph"><p>As you can see Groovy&#8217;s <code>def</code> keyword gets compiled to <code>Object</code> type in this case. OK, but what is wrong with that? Well, JUnit 5 method resolver <a href="https://github.com/junit-team/junit5/blob/master/junit-jupiter-engine/src/main/java/org/junit/jupiter/engine/discovery/predicates/IsTestMethod.java" target="_blank" rel="noopener">uses <code>IsTestMethod</code> predicate</a> which requires that test method returns <code>void</code>. Otherwise method annotated with <code>@Test</code> does not get resolved.</p></div><div class="paragraph"><p>If we only replace <code>def</code> with <code>void</code> keyword:</p></div><div class="listingblock"><div class="title">Listing 4. Updated src/test/groovy/UnitTest.groovy</div><div class="content"><pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import org.junit.jupiter.api.Testclass UnitTest {    @Test    void shouldThrowAnException() {        throw new RuntimeException()    }}</code></pre></div></div><div class="paragraph"><p>the test will execute and fail as expected:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% gradle test&gt; Task :test FAILEDUnitTest &gt; shouldThrowAnException() FAILED    java.lang.RuntimeException at UnitTest.groovy:71 test completed, 1 failedFAILURE: Build failed with an exception.* What went wrong:Execution failed for task ':test'.&gt; There were failing tests. See the report at: file:///home/wololock/workspace/groovy-junit5/build/reports/tests/test/index.html* Try:Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.* Get more help at https://help.gradle.orgBUILD FAILED in 1s2 actionable tasks: 2 executed</code></pre></div></div></div></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;paragraph&quot;&gt;&lt;p&gt;In this short blog post I would like to explain how to avoid popular mistake when you write your first JUnit 5 test case in Groovy.&lt;/p&gt;&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="How to" scheme="https://e.printstacktrace.blog/categories/How-to/"/>
+    
+    
+      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="junit" scheme="https://e.printstacktrace.blog/tags/junit/"/>
+    
+      <category term="unit test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
+    
+  </entry>
   
   <entry>
     <title>GraalVM and Groovy - how to start?</title>
