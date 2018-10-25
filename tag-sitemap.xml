@@ -135,13 +135,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/java/</loc>
-        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
         <lastmod>2018-10-03T21:28:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -165,6 +158,41 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/unit-test/</loc>
         <lastmod>2018-10-24T07:00:48.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/java/</loc>
+        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/micronaut/</loc>
+        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/non-blocking/</loc>
+        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/async/</loc>
+        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/reactive-programming/</loc>
+        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

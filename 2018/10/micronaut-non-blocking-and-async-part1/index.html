@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="author" content="Szymon Stepniak"><title>Non-blocking and async Micronaut - quick start (part 1) | e.printStackTrace(); // Blog</title><meta name="description" content="If you haven&amp;#8217;t heard about Micronaut you have been probably just woken up from deep hibernation. No&amp;nbsp;worries, I&amp;#8217;m joking :) Anyway, Micronaut 1.0 GA was released yesterday and it is the right time to play around with it a bit. In this a..."><link rel="alternate" type="application/rss+xml" title="e.printStackTrace(); // Blog" href="/atom.xml"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.6.0/styles/androidstudio.min.css"><link rel="stylesheet" href="/css/main.css?v=16"><link rel="stylesheet" href="/css/conum.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans+Mono:400,700"><meta name="description" content="If you haven&amp;#8217;t heard about Micronaut you have been probably just woken up from deep hibernation. No&amp;nbsp;worries, I&amp;#8217;m joking :) Anyway, Micronaut 1.0 GA was released yesterday and it is th"><meta name="keywords" content="java,micronaut,non-blocking,async,reactive-programming"><meta property="og:type" content="article"><meta property="og:title" content="Non-blocking and async Micronaut - quick start (part 1)"><meta property="og:url" content="https://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part1/index.html"><meta property="og:site_name" content="e.printStackTrace(); &#x2F;&#x2F; Blog"><meta property="og:description" content="If you haven&amp;#8217;t heard about Micronaut you have been probably just woken up from deep hibernation. No&amp;nbsp;worries, I&amp;#8217;m joking :) Anyway, Micronaut 1.0 GA was released yesterday and it is th"><meta property="og:locale" content="en"><meta property="og:image" content="https://e.printstacktrace.blog/images/og/micronaut-nonblocking-part1.jpg"><meta property="og:updated_time" content="2018-10-25T00:33:37.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Non-blocking and async Micronaut - quick start (part 1)"><meta name="twitter:description" content="If you haven&amp;#8217;t heard about Micronaut you have been probably just woken up from deep hibernation. No&amp;nbsp;worries, I&amp;#8217;m joking :) Anyway, Micronaut 1.0 GA was released yesterday and it is th"><meta name="twitter:image" content="https://e.printstacktrace.blog/images/og/micronaut-nonblocking-part1.jpg"><meta name="twitter:creator" content="@wololock"></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#main-navbar" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><span>e.printStackTrace(); // Blog</span></a></div><div id="main-navbar" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/archives">Archive</a></li><li><a href="https://github.com/wololock/wololock.github.io">Github</a></li><li><a href="https://travis-ci.org/wololock/wololock.github.io"><img src="https://travis-ci.org/wololock/wololock.github.io.png?branch=develop"></a></li></ul></div></div></nav><header class="header-section"><div style="background-image:url(/img/micronaut-bg.jpg)" class="intro-header"><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class="post-heading"><a href="/categories/How-to/" class="category">How to</a><h1>Non-blocking and async Micronaut - quick start (part 1)</h1><div class="post-meta"><ul><li><time datetime="2018-10-25T00:33:37.000Z" itemprop="datePublished">Oct 25, 2018</time></li><li>14 minutes read</li><li><a href="https://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part1/#disqus_thread">0 Comments</a></li></ul></div></div></div></div></div></div></header><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><article role="main" class="blog-post"><div class="paragraph"><p>If you haven&#8217;t heard about <a href="http://micronaut.io/" target="_blank" rel="noopener">Micronaut</a> you have been probably just woken up from deep hibernation. No&nbsp;worries, I&#8217;m joking :) Anyway, Micronaut 1.0 GA <a href="https://twitter.com/micronautfw/status/1054754150292967424" target="_blank" rel="noopener">was released yesterday</a> and it is the right time to play around with it a bit. In this article I would like to show you how easy it is to handle HTTP requests in a non-blocking manner, using just a single computation thread. Interested? Let&#8217;s start!</p></div><a id="more"></a><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa icon-warning" title="Warning"></i></td><td class="content">This is not a introduction to Micronaut. If you are not familiar with the framework, consider reading official <a href="https://docs.micronaut.io/latest/guide/index.html" target="_blank" rel="noopener">User Guide</a> first.</td></tr></table></div><div class="sect1"><h2 id="introduction">Introduction</h2><div class="sectionbody"><div class="paragraph"><p>In this article I would like to show you a very simple example that simulates communication between two remote services:</p></div><div class="ulist"><ul><li><p><strong>product-service</strong> exposes a single endpoint <code>(GET) /product/{id}</code> which returns specific product information. We will simulate high latency (fixed on different products) - the idea is that this service might communicate with <code>n</code> different remote services to collect final product information.</p></li><li><p><strong>recommendations-service</strong> exposes a single endpoint <code>(GET) /recommendations</code> which returns fixed number of recommendations. We won&#8217;t focus on building solid recommendations system - this service is just a mock that communicates over HTTP with <strong>product-service</strong> to get the information about products it&#8217;s going to recommend to the user. A single HTTP request to recommendations-service endpoint will cause 4 additional non-blocking requests to product-service endpoint.</p></li></ul></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">This example was inspired by demo I made for my <a href="https://github.com/wololock/ratpack-quickstart-demo" target="_blank" rel="noopener"><em>"Ratpack - practical quickstart"</em></a> presentation.</td></tr></table></div><div class="paragraph"><p>Micronaut is shipped with handy command line tool <code>mn</code>:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% mn --help
+Usage: mn [-hnvVx] [COMMAND]
+Micronaut CLI command line interface for generating projects and services.
+Commonly used commands are:
+  create-app NAME
+  create-cli-app NAME
+  create-federation NAME --services SERVICE_NAME[,SERVICE_NAME]...
+  create-function NAME
+
+Options:
+  -h, --help           Show this help message and exit.
+  -n, --plain-output   Use plain text instead of ANSI colors and styles.
+  -v, --verbose        Create verbose output.
+  -V, --version        Print version information and exit.
+  -x, --stacktrace     Show full stack trace when exceptions occur.
+
+Commands:
+  create-app         Creates an application
+  create-cli-app     Creates a command line application
+  create-federation  Creates a federation of services
+  create-function    Creates a serverless function application
+  create-profile     Creates a profile
+  help               Prints help information for a specific command
+  list-profiles      Lists the available profiles
+  profile-info       Display information about a given profile</code></pre></div></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">You can install Micronaut CLI using <a href="https://sdkman.io/sdks#micronaut" target="_blank" rel="noopener">SDKMAN!</a> - <code>sdk install micronaut</code></td></tr></table></div><div class="paragraph"><p>Now we are able to create Micronaut application skeleton:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mn create-app micronaut-nonblocking-async-demo</code></pre></div></div><div class="paragraph"><p>It creates a new application using Gradle build tool (switching to Maven is possible if needed). After applying a few small changes our final <code>build.gradle</code> file looks like this:</p></div><div class="listingblock"><div class="title">Listing 1. build.gradle</div><div class="content"><pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">plugins {
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "com.github.johnrengelman.shadow" version "4.0.0"
+    id "net.ltgt.apt-eclipse" version "0.18"
+    id "net.ltgt.apt-idea" version "0.18"
+}
+
+apply plugin: "application"
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "jacoco"
+
+version "0.1"
+group "com.github.wololock.micronaut"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micronaut:micronaut-bom:1.0.0'
+    }
+}
+
+dependencies {
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
+    compile "io.micronaut:micronaut-inject"
+    compile "io.micronaut:micronaut-validation"
+    compile "io.micronaut:micronaut-runtime"
+    compile "io.micronaut:micronaut-http-client"
+    compile "io.micronaut:micronaut-http-server-netty"
+    compileOnly "io.micronaut:micronaut-inject-java"
+    runtime "ch.qos.logback:logback-classic:1.2.3"
+    testCompile "io.micronaut:micronaut-inject-java"
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4")
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
+
+mainClassName = "com.github.wololock.micronaut.Application"
+compileJava.options.compilerArgs += '-parameters'
+compileTestJava.options.compilerArgs += '-parameters'
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport</code></pre></div></div></div></div><div class="sect1"><h2 id="implementing-product-service">Implementing product-service</h2><div class="sectionbody"><div class="paragraph"><p>We start with writing some product-service code. For simplicity we will put both services to a single app - this is OK for this demo, but in real-life you would keep these two services as separate applications. Here is a list of files we are going to create:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">products
+├── ProductClient.java
+├── ProductController.java
+├── Product.java
+└── ProductService.java</code></pre></div></div><div class="ulist"><ul><li><p><code>Product</code> class is defined by 3 simple properties: <code>id</code>, <code>name</code> and <code>price</code>. <a href="https://github.com/wololock/micronaut-nonblocking-async-demo/blob/master/src/main/java/com/github/wololock/micronaut/products/Product.java" target="_blank" rel="noopener">Nothing fancy</a>.</p></li><li><p><code>ProductService</code> stores 4 exemplary products in memory and simulates high latency when retrieving products by id.</p></li><li><p><code>ProductController</code> exposes a public API endpoint.</p></li><li><p><code>ProductClient</code> is Micronaut&#8217;s special interface that generates an HTTP client we can use to communicate with the API from other services (from recommendations-service for instance).</p></li></ul></div><div class="paragraph"><p>Here is what implementation of <code>ProductService</code> looks like:</p></div><div class="listingblock"><div class="title">Listing 2. src/main/java/com/github/wololock/micronaut/products/ProductService.java</div><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.github.wololock.micronaut.products;
+
+import io.reactivex.Maybe;
+import io.reactivex.schedulers.Schedulers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Singleton;
+import java.math.BigDecimal;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
+
+@Singleton <i class="conum" data-value="1"></i><b>(1)</b>
+final class ProductService {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
+
+    private static final Map&lt;String, Supplier&lt;Product&gt;&gt; products = new ConcurrentHashMap&lt;&gt;();
+
+    static {
+        products.put("PROD-001", createProduct("PROD-001", "Micronaut in Action", 29.99, 120));
+        products.put("PROD-002", createProduct("PROD-002", "Netty in Action", 31.22, 190));
+        products.put("PROD-003", createProduct("PROD-003", "Effective Java, 3rd edition", 31.22, 600));
+        products.put("PROD-004", createProduct("PROD-004", "Clean Code", 31.22, 1200));
+    }
+
+    public Maybe&lt;Product&gt; findProductById(final String id) { <i class="conum" data-value="2"></i><b>(2)</b>
+        return Maybe.just(id)
+                .subscribeOn(Schedulers.io()) <i class="conum" data-value="3"></i><b>(3)</b>
+                .map(it -&gt; products.getOrDefault(it, () -&gt; null).get());
+    }
+
+    private static Supplier&lt;Product&gt; createProduct(final String id, final String name, final Double price, final int latency) {
+        return () -&gt; {
+            simulateLatency(latency); <i class="conum" data-value="4"></i><b>(4)</b>
+            log.debug("Product with id {} ready to return...", id);
+            return new Product(id, name, BigDecimal.valueOf(price));
+        };
+    }
+
+    private static void simulateLatency(final int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException ignored) {}
+    }
+}</code></pre></div></div><div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td><code>@javax.inject.Singleton</code> annotation instructs Micronaut that this class represents a bean to inject.</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td><code>Maybe&lt;Product&gt;</code> return type means that this method returns a single <code>Product</code>, or no value, or throws exception.</td></tr><tr><td><i class="conum" data-value="3"></i><b>3</b></td><td>Calling <code>subscribeOn(Schedulers.io())</code> moves calculation to a scheduler responsible for running IO-bound work.</td></tr><tr><td><i class="conum" data-value="4"></i><b>4</b></td><td>We simulate latency with <code>Thread.sleep(millis)</code> before returning a <code>Product</code> object from a supplier.</td></tr></table></div><div class="paragraph"><p>The most important and the most interesting part is implemented in <code>ProductService</code> class. Firstly, we store a few products in memory as <code>Supplier&lt;Product&gt;</code> to simulate latency inside supplier&#8217;s body. Secondly, we return <code>Maybe&lt;Product&gt;</code> type to inform that <code>Product</code> may or not be returned, which is expected if we call the method with <code>id</code> that does not map to any existing product.</p></div><div class="paragraph"><p>Take a look how the <code>findProductById</code> method is implemented. We start with creating <code>Maybe&lt;String&gt;</code> object using <code>id</code> received from the method call. Then we switch to <code>Schedulers.io()</code> scheduler to move execution of this blocking operation to a thread-pool that is designed to execute such operations. And finally we map <code>id</code> to a product associated with it and we return <code>Maybe&lt;Product&gt;</code> type. For this demo purpose we also log some debug information - it will be useful when we execute a few parallel requests to see how it works.</p></div><div class="paragraph"><p>Now it is time to implement <code>ProductController</code> - our public API endpoint:</p></div><div class="listingblock"><div class="title">Listing 3. src/main/java/com/github/wololock/micronaut/products/ProductController.java</div><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.github.wololock.micronaut.products;
+
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
+import io.reactivex.Maybe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Controller("/product") <i class="conum" data-value="1"></i><b>(1)</b>
+final class ProductController {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
+
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) { <i class="conum" data-value="2"></i><b>(2)</b>
+        this.productService = productService;
+    }
+
+    @Get("/{id}") <i class="conum" data-value="3"></i><b>(3)</b>
+    public Maybe&lt;Product&gt; getProduct(String id) { <i class="conum" data-value="4"></i><b>(4)</b>
+        log.debug("ProductController.getProduct({}) executed...", id);
+
+        return productService.findProductById(id).onErrorComplete(); <i class="conum" data-value="5"></i><b>(5)</b>
+    }
+}</code></pre></div></div><div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td><code>@Controller("/products")</code> annotation registers HTTP handler class.</td></tr><tr><td><i class="conum" data-value="2"></i><b>2</b></td><td>Constructor injection does not require any annotation.</td></tr><tr><td><i class="conum" data-value="3"></i><b>3</b></td><td><code>@Get("/{id}")</code> defines GET mapping and path token <code>id</code>.</td></tr><tr><td><i class="conum" data-value="4"></i><b>4</b></td><td><code>Maybe&lt;Product&gt;</code> return type instructs event-loop that we are going to execute this request in a non-blocking manner.</td></tr><tr><td><i class="conum" data-value="5"></i><b>5</b></td><td>Calling <code>onErrorComplete()</code> ensures that in case of <code>null</code> product HTTP server will produce <code>404 Not Found</code> response.</td></tr></table></div><div class="paragraph"><p>And the last, but not least - <code>ProductClient</code> interface:</p></div><div class="listingblock"><div class="title">Listing 4. src/main/java/com/github/wololock/micronaut/products/ProductClient.java</div><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.github.wololock.micronaut.products;
+
+import io.micronaut.http.annotation.Get;
+import io.micronaut.http.client.annotation.Client;
+import io.reactivex.Maybe;
+
+@Client("/product")
+public interface ProductClient {
+
+    @Get("/{id}")
+    Maybe&lt;Product&gt; getProduct(final String id);
+}</code></pre></div></div><div class="paragraph"><p>Micronaut will generate and compile HTTP client that implements this interface - no runtime proxy that slows down our applications. Brilliant!</p></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">Source code of the application described in this blog post can be found here <a href="https://github.com/wololock/micronaut-nonblocking-async-demo" class="bare" target="_blank" rel="noopener">https://github.com/wololock/micronaut-nonblocking-async-demo</a></td></tr></table></div></div></div><div class="sect1"><h2 id="running-product-service">Running product-service</h2><div class="sectionbody"><div class="paragraph"><p>Now it is time to run our service and see it in action:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">gradle run</code></pre></div></div><div class="paragraph"><p>After about a second we will information that our server application is running:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">01:31:27.475 [main] INFO  - Startup completed in 636ms. Server Running: http://localhost:8080</code></pre></div></div><div class="paragraph"><p>Let&#8217;s execute two requests. I will use <a href="https://httpie.org/" target="_blank" rel="noopener">HTTPie</a> in below examples:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% http localhost:8080/product/PROD-001
+
+HTTP/1.1 200 OK
+Date: Thu, 25 Oct 2018 01:34:15 GMT
+connection: keep-alive
+content-length: 60
+content-type: application/json
+
+{
+    "id": "PROD-001",
+    "name": "Micronaut in Action",
+    "price": 29.99
+}</code></pre></div></div><div class="paragraph"><p>Product with id <code>PROD-001</code> returned successfully. Now let&#8217;s take a look what does the response for non-existing product looks like:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% http localhost:8080/product/PROD-008
+
+HTTP/1.1 404 Not Found
+Date: Thu, 25 Oct 2018 01:35:11 GMT
+connection: close
+content-length: 93
+content-type: application/json
+
+{
+    "_links": {
+        "self": {
+            "href": "/product/PROD-008",
+            "templated": false
+        }
+    },
+    "message": "Page Not Found"
+}</code></pre></div></div></div></div><div class="sect1"><h2 id="executing-multiple-parallel-requests">Executing multiple parallel requests</h2><div class="sectionbody"><div class="paragraph"><p>Above examples shown that application works as expected. But does it process requests in a&nbsp;non-blocking manner? Let&#8217;s test it out. Firstly, we will update <code>application.yml</code> and set a single event-loop to process all incoming requests:</p></div><div class="listingblock"><div class="title">Listing 5. src/main/resources/application.yml</div><div class="content"><pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">micronaut:
+    application:
+        name: micronaut-nonblocking-async-demo
+
+    server:
+        maxRequestSize: 1MB
+        host: localhost
+        netty:
+           maxHeaderSize: 500KB
+           worker:
+              threads: 1
+           parent:
+              threads: 1
+           childOptions:
+              autoRead: true</code></pre></div></div><div class="paragraph"><p>Following configuration means that there is only one event-loop (a single thread) that is responsible for handling incoming HTTP requests. The whole idea here is to keep this event-loop ready to process requests and delegate all blocking operations to a separate thread-pool where they can block for some amount of time.</p></div><div class="paragraph"><p>We will use <a href="https://github.com/JoeDog/siege" target="_blank" rel="noopener">siege</a> - an http load tester and benchmarking command line tool that allows us executing multiple concurrent requests. We will execute 20 multiple HTTP requests to see how our application reacts to 20 concurrent requests with just a single thread dedicated to handling requests:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">% siege -c 20 -r 1 http://localhost:8080/product/PROD-003
+
+** SIEGE 4.0.4
+** Preparing 20 concurrent users for battle.
+The server is now under siege...
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.61 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+HTTP/1.1 200     0.62 secs:      68 bytes ==&gt; GET  /product/PROD-003
+
+Transactions:		          20 hits
+Availability:		      100.00 %
+Elapsed time:		        0.62 secs
+Data transferred:	        0.00 MB
+Response time:		        0.62 secs
+Transaction rate:	       32.26 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		       19.87
+Successful transactions:          20
+Failed transactions:	           0
+Longest transaction:	        0.62
+Shortest transaction:	        0.61</code></pre></div></div><div class="paragraph"><p>Our application handled 20 concurrent requests with a single computation thread. <code>PROD-003</code> has <code>600ms</code> latency, so all responses returned approximately at the same time. And here is what console log looks like after handling these 20 requests:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">01:51:46.623 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.630 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.630 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.630 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.631 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.631 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.631 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.631 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.632 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.632 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.632 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.632 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.632 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.633 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.633 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.633 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.633 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.633 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.634 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:46.634 [nioEventLoopGroup-1-2     ] DEBUG - ProductController.getProduct(PROD-003) executed...
+01:51:47.231 [RxCachedThreadScheduler-1 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-2 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-4 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-5 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-3 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-6 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.231 [RxCachedThreadScheduler-7 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.232 [RxCachedThreadScheduler-8 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.232 [RxCachedThreadScheduler-9 ] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.232 [RxCachedThreadScheduler-10] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.232 [RxCachedThreadScheduler-11] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.233 [RxCachedThreadScheduler-12] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.233 [RxCachedThreadScheduler-13] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.233 [RxCachedThreadScheduler-14] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.233 [RxCachedThreadScheduler-15] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.233 [RxCachedThreadScheduler-16] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.234 [RxCachedThreadScheduler-17] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.234 [RxCachedThreadScheduler-18] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.234 [RxCachedThreadScheduler-19] DEBUG - Product with id PROD-003 ready to return...
+01:51:47.234 [RxCachedThreadScheduler-20] DEBUG - Product with id PROD-003 ready to return...</code></pre></div></div><div class="paragraph"><p>This log shows clearly what is the biggest benefit of non-blocking HTTP requests processing. We use a single event-loop running in <code>nioEventLoopGroup-1-2</code> thread. It receives HTTP request and instead of blocking for 600 milliseconds (latency of <code>PROD-003</code> product) it delegates operation to IO thread pool and is ready to handle next request. The default IO thread pool uses cached thread pool, so in this case it spawns 20 threads to handle the operation and they will wait 60 seconds to handle another job.</p></div></div></div><div class="sect1"><h2 id="conclusion">Conclusion</h2><div class="sectionbody"><div class="paragraph"><p>Part 1 ends here. You have seen Micronaut&#8217;s non-blocking processing in action, and what is even more important - now you know that switching from blocking model to a non-blocking one does not require a huge mind shift. In the part 2 we will implement recommendations-service side and integrate it with product-service endpoint using Micronaut&#8217;s reactive HTTP client.</p></div><div class="paragraph"><p>I hope you have learned something interesting today. If you are interested in Micronaut, please leave a comment below and let me know what kind of topics interest you the most. Stay tuned, and until the next time!</p></div></div></div><section class="post-tags"><a href="/tags/java/" class="tag post-meta">java</a><a href="/tags/micronaut/" class="tag post-meta">micronaut</a><a href="/tags/non-blocking/" class="tag post-meta">non-blocking</a><a href="/tags/async/" class="tag post-meta">async</a><a href="/tags/reactive-programming/" class="tag post-meta">reactive-programming</a></section><footer class="post-footer"><div class="row"><div class="col-lg-2 col-md-2 col-sm-2 hidden-xs"><img src="https://www.gravatar.com/avatar/b22c1842c6e8f7f2b9b3ed8c0d4efb4d?s=200" class="img-responsive img-circle"></div><div class="col-lg-6 col-md-7 col-sm-6 col-xs-12 author"><h4>Szymon Stepniak</h4><p>Upwork's Top Rated freelancer, Toruń Java User Group founder, open source contributor, Stack Overflow active user, bedroom guitar player.</p><ul class="social-links"><li><a href="https://github.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-github"></span></a></li><li><a href="https://stackoverflow.com/users/2194470/szymon-stepniak?tab=profile" onclick="return window.open(this.href),!1"><span class="fa fa-stack-overflow"></span></a></li><li><a href="https://twitter.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-twitter"></span></a></li><li><a href="mailto:szymon.stepniak@gmail.com" onclick="return window.open(this.href),!1"><span class="fa fa-envelope"></span></a></li><li><a href="https://www.linkedin.com/in/szymon-stępniak-9a0b1630" onclick="return window.open(this.href),!1"><span class="fa fa-linkedin"></span></a></li></ul></div><div class="col-lg-4 col-md-3 col-sm-4 col-xs-12 share"><h4>Share this post</h4><a href="https://twitter.com/share?url=https://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part1/&amp;via=wololock&amp;text=Non-blocking and async Micronaut - quick start (part 1)" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1'><span class="fa fa-twitter"></span></a><a href="https://www.facebook.com/sharer/sharer.php?uhttps://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part1/" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1'><span class="fa fa-facebook-square"></span></a><a href="https://plus.google.com/share?url=https://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part1/" onclick="window.open(this.href, &quot;google-plus-share&quot;, &quot;width=490,height=530&quot;);return false;"><span class="fa fa-google-plus-square"></span></a></div></div></footer></article><nav role="pagination" class="pagination"><a href="/2018/10/how-to-avoid-no-tests-were-found-when-using-junit5-with-groovy/" class="pull-right btn">Previous post →</a></nav><div class="disqus-comments"><div class="comments"><div id="disqus_thread"></div></div></div><script>var url_parts=window.location.href.split("?"),disqus_url=url_parts[0];!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//eprintstacktrace.disqus.com/embed.js",(document.head||d.body).appendChild(t)}()</script></div></div></div><script id="dsq-count-scr" src="//eprintstacktrace.disqus.com/count.js"></script><footer class="site-footer"><div class="inner"><section class="copyright">All content copyright &copy; 2017 &bull; All rights reserved.</section><section class="poweredby"><ul><li><span>Published with </span><a href="https://hexo.io">Hexo</a></li><li><span>Hosted on </span><a href="https://github.com/wololock/wololock.github.io"><span class="fa fa-github"></span></a></li><li><span>Deployed with </span><a href="https://travis-ci.org/wololock/wololock.github.io">Travis CI</a></li><li><span>Subscribe </span><a href="http://feeds.feedburner.com/Eprintstacktracenet"><span class="fa fa-rss"></span></a></li></ul></section></div></footer><script src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script><script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/js/main.js?v=5"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad()</script><script>"localhost"!==window.location.hostname&&"127.0.0.1"!==window.location.hostname&&(!function(a,e,n,o,t,c,g){a.GoogleAnalyticsObject=t,a.ga=a.ga||function(){(a.ga.q=a.ga.q||[]).push(arguments)},a.ga.l=1*new Date,c=e.createElement(n),g=e.getElementsByTagName(n)[0],c.async=1,c.src="//www.google-analytics.com/analytics.js",g.parentNode.insertBefore(c,g)}(window,document,"script",0,"ga"),ga("create","UA-42400890-5","auto"),ga("send","pageview"))</script></body></html>
