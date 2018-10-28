@@ -128,9 +128,15 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
+      <category term="unit-test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
+    
       <category term="junit" scheme="https://e.printstacktrace.blog/tags/junit/"/>
     
-      <category term="unit test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
+      <category term="junit5" scheme="https://e.printstacktrace.blog/tags/junit5/"/>
+    
+      <category term="gradle" scheme="https://e.printstacktrace.blog/tags/gradle/"/>
+    
+      <category term="ide" scheme="https://e.printstacktrace.blog/tags/ide/"/>
     
   </entry>
   
@@ -152,11 +158,13 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/How-to/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
+    
+      <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
+    
+      <category term="openjdk" scheme="https://e.printstacktrace.blog/tags/openjdk/"/>
     
   </entry>
   
@@ -179,6 +187,8 @@
     
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="java-8" scheme="https://e.printstacktrace.blog/tags/java-8/"/>
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
@@ -238,6 +248,10 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
+      <category term="equals" scheme="https://e.printstacktrace.blog/tags/equals/"/>
+    
+      <category term="operator" scheme="https://e.printstacktrace.blog/tags/operator/"/>
+    
   </entry>
   
   <entry>
@@ -262,6 +276,8 @@
     
       <category term="metaprogramming" scheme="https://e.printstacktrace.blog/tags/metaprogramming/"/>
     
+      <category term="static" scheme="https://e.printstacktrace.blog/tags/static/"/>
+    
   </entry>
   
   <entry>
@@ -283,6 +299,10 @@
     
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="dynamic-types" scheme="https://e.printstacktrace.blog/tags/dynamic-types/"/>
+    
+      <category term="coercion" scheme="https://e.printstacktrace.blog/tags/coercion/"/>
     
   </entry>
   
@@ -310,6 +330,8 @@
     
       <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
     
+      <category term="progress" scheme="https://e.printstacktrace.blog/tags/progress/"/>
+    
   </entry>
   
   <entry>
@@ -330,9 +352,11 @@
       <category term="Programming tips" scheme="https://e.printstacktrace.blog/categories/Programming-tips/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="script" scheme="https://e.printstacktrace.blog/tags/script/"/>
+    
+      <category term="class" scheme="https://e.printstacktrace.blog/tags/class/"/>
     
   </entry>
   
@@ -354,7 +378,11 @@
       <category term="Programming tips" scheme="https://e.printstacktrace.blog/categories/Programming-tips/"/>
     
     
+      <category term="split" scheme="https://e.printstacktrace.blog/tags/split/"/>
+    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="string" scheme="https://e.printstacktrace.blog/tags/string/"/>
     
   </entry>
   
@@ -382,7 +410,11 @@
     
       <category term="spock" scheme="https://e.printstacktrace.blog/tags/spock/"/>
     
-      <category term="unit tests" scheme="https://e.printstacktrace.blog/tags/unit-tests/"/>
+      <category term="unit-test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
+    
+      <category term="session" scheme="https://e.printstacktrace.blog/tags/session/"/>
+    
+      <category term="guice" scheme="https://e.printstacktrace.blog/tags/guice/"/>
     
   </entry>
   
@@ -410,7 +442,11 @@
     
       <category term="spock" scheme="https://e.printstacktrace.blog/tags/spock/"/>
     
-      <category term="unit tests" scheme="https://e.printstacktrace.blog/tags/unit-tests/"/>
+      <category term="unit-test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
+    
+      <category term="session" scheme="https://e.printstacktrace.blog/tags/session/"/>
+    
+      <category term="mock" scheme="https://e.printstacktrace.blog/tags/mock/"/>
     
   </entry>
   
@@ -468,6 +504,8 @@
     
       <category term="metaprogramming" scheme="https://e.printstacktrace.blog/tags/metaprogramming/"/>
     
+      <category term="closure" scheme="https://e.printstacktrace.blog/tags/closure/"/>
+    
   </entry>
   
   <entry>
@@ -519,6 +557,12 @@
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="java-stream" scheme="https://e.printstacktrace.blog/tags/java-stream/"/>
+    
+      <category term="java-8" scheme="https://e.printstacktrace.blog/tags/java-8/"/>
+    
+      <category term="split" scheme="https://e.printstacktrace.blog/tags/split/"/>
+    
+      <category term="partition" scheme="https://e.printstacktrace.blog/tags/partition/"/>
     
   </entry>
   

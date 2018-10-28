@@ -9,6 +9,13 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/partition/</loc>
+        <lastmod>2017-09-09T08:19:29.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/grails/</loc>
         <lastmod>2017-09-30T05:18:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,6 +31,13 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/groovy-2-4/</loc>
+        <lastmod>2017-10-08T07:39:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/closure/</loc>
         <lastmod>2017-10-08T07:39:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -58,6 +72,13 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/mock/</loc>
+        <lastmod>2018-06-24T09:59:57.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
         <lastmod>2018-06-26T20:55:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,8 +93,43 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/unit-tests/</loc>
+        <loc>https://e.printstacktrace.blog/tags/session/</loc>
         <lastmod>2018-06-26T20:55:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/guice/</loc>
+        <lastmod>2018-06-26T20:55:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/split/</loc>
+        <lastmod>2018-06-30T20:48:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/string/</loc>
+        <lastmod>2018-06-30T20:48:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/script/</loc>
+        <lastmod>2018-07-10T10:05:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/class/</loc>
+        <lastmod>2018-07-10T10:05:19.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -100,7 +156,35 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/progress/</loc>
+        <lastmod>2018-07-18T07:25:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/dynamic-types/</loc>
+        <lastmod>2018-09-03T09:28:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/coercion/</loc>
+        <lastmod>2018-09-03T09:28:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/metaprogramming/</loc>
+        <lastmod>2018-09-08T21:22:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/static/</loc>
         <lastmod>2018-09-08T21:22:19.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -135,6 +219,20 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/equals/</loc>
+        <lastmod>2018-09-29T09:13:21.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/operator/</loc>
+        <lastmod>2018-09-29T09:13:21.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
         <lastmod>2018-10-02T17:55:52.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -156,7 +254,28 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
+        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/openjdk/</loc>
+        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2018-10-24T07:00:48.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/unit-test/</loc>
         <lastmod>2018-10-24T07:00:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -170,7 +289,21 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/unit-test/</loc>
+        <loc>https://e.printstacktrace.blog/tags/junit5/</loc>
+        <lastmod>2018-10-24T07:00:48.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/gradle/</loc>
+        <lastmod>2018-10-24T07:00:48.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/ide/</loc>
         <lastmod>2018-10-24T07:00:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
