@@ -434,7 +434,11 @@
     
       <category term="haskell" scheme="https://e.printstacktrace.blog/tags/haskell/"/>
     
-      <category term="functional programming" scheme="https://e.printstacktrace.blog/tags/functional-programming/"/>
+      <category term="functional-programming" scheme="https://e.printstacktrace.blog/tags/functional-programming/"/>
+    
+      <category term="factorial" scheme="https://e.printstacktrace.blog/tags/factorial/"/>
+    
+      <category term="puzzle" scheme="https://e.printstacktrace.blog/tags/puzzle/"/>
     
   </entry>
   
