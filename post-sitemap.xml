@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/2018/11/tail-recursive-methods-in-groovy/</loc>
+        <lastmod>2018-12-11T09:53:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/2018/10/micronaut-non-blocking-and-async-part-3/</loc>
         <lastmod>2018-10-30T09:53:18.000Z</lastmod>
         <changefreq>weekly</changefreq>
