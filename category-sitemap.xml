@@ -22,13 +22,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/categories/Software-developer-career-boost/</loc>
-        <lastmod>2018-07-18T07:25:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/categories/How-to/</loc>
         <lastmod>2018-10-24T07:00:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -45,6 +38,13 @@
     <url>
         <loc>https://e.printstacktrace.blog/categories/Micronaut-Cookbook/</loc>
         <lastmod>2018-10-30T09:53:18.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/categories/Software-developer-career-boost/</loc>
+        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
