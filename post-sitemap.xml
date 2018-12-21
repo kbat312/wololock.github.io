@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/2018/12/junit-assume-notnull-throws-nullpointerexception-in-groovy-whats-wrong/</loc>
+        <lastmod>2018-12-20T23:49:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/2018/11/tail-recursive-methods-in-groovy/</loc>
         <lastmod>2018-12-18T09:15:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
