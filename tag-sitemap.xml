@@ -367,13 +367,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/programming/</loc>
-        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/factorial/</loc>
         <lastmod>2018-12-18T09:15:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -437,13 +430,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2018-12-27T18:52:37.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/spock/</loc>
         <lastmod>2018-12-27T18:52:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -460,6 +446,41 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/unit-testing/</loc>
         <lastmod>2018-12-27T18:52:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/programming/</loc>
+        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/book/</loc>
+        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/review/</loc>
+        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/reading/</loc>
+        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
