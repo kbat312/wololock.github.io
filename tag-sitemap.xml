@@ -199,20 +199,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
-        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
-        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/openjdk/</loc>
         <lastmod>2018-10-03T21:28:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -325,13 +311,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/haskell/</loc>
-        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/career/</loc>
         <lastmod>2018-12-02T16:23:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -353,6 +332,13 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/haskell/</loc>
+        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/aoc2018/</loc>
         <lastmod>2018-12-02T16:23:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -362,13 +348,6 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/advent-of-code/</loc>
         <lastmod>2018-12-02T16:23:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/factorial/</loc>
-        <lastmod>2018-12-18T09:15:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -396,6 +375,13 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/recursion/</loc>
+        <lastmod>2018-12-18T09:15:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/factorial/</loc>
         <lastmod>2018-12-18T09:15:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -451,13 +437,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2018-12-29T15:05:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/programming/</loc>
         <lastmod>2018-12-29T15:05:55.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -495,6 +474,34 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/non-fiction/</loc>
         <lastmod>2018-12-31T15:08:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-01-16T14:14:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
+        <lastmod>2019-01-16T14:14:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
+        <lastmod>2019-01-16T14:14:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/grape/</loc>
+        <lastmod>2019-01-16T14:14:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
