@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/2019/01/graalvm-native-image-inside-docker-container-does-it-make-sense/</loc>
+        <lastmod>2019-01-19T12:19:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/2019/01/graalvm-groovy-grape-creating-native-image-of-standalone-script/</loc>
         <lastmod>2019-01-19T09:34:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
