@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="author" content="Szymon Stepniak"><meta name="robots" content="all"><title>Ratpack on GraalVM - how to start?</title><meta name="description" content="The journey inside the exciting world of GraalVM continues. Today I would like to share with you results of running Ratpack on GraalVM experiment. You will learn how to build native binary of a simple &quot;Hello, World!&quot; Ratpack application. We will also r..."><meta name="keywords" content="java,ratpack,graalvm,native-image,non-blocking"><link rel="shortcut icon" type="image/png" href="/favicon.png"><link rel="dns-prefetch" href="//cdnjs.cloudflare.com"><link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com"><link rel="dns-prefetch" href="//disqus.com"><link rel="dns-prefetch" href="//c.disquscdn.com"><link rel="canonical" href="https://e.printstacktrace.blog/ratpack-graalvm-how-to-start/"><link rel="alternate" type="application/rss+xml" title="e.printStackTrace(); // Blog" href="/atom.xml"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/androidstudio.min.css"><link rel="stylesheet" href="/css/main.css?v=21"><link rel="stylesheet" href="/css/conum.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans+Mono:400,700"><meta name="description" content="The journey inside the exciting world of GraalVM continues. Today I would like to share with you results of running Ratpack on GraalVM experiment. You will learn how to build native binary of a simple"><meta name="keywords" content="java,ratpack,graalvm,native-image,non-blocking"><meta property="og:type" content="article"><meta property="og:title" content="Ratpack on GraalVM - how to start?"><meta property="og:url" content="https://e.printstacktrace.blog/ratpack-graalvm-how-to-start/index.html"><meta property="og:site_name" content="e.printStackTrace(); &#x2F;&#x2F; Blog"><meta property="og:description" content="The journey inside the exciting world of GraalVM continues. Today I would like to share with you results of running Ratpack on GraalVM experiment. You will learn how to build native binary of a simple"><meta property="og:locale" content="en"><meta property="og:image" content="https://e.printstacktrace.blog/images/og/ratpack-graalvm-how-to-start.jpg"><meta property="og:updated_time" content="2019-02-15T02:10:39.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ratpack on GraalVM - how to start?"><meta name="twitter:description" content="The journey inside the exciting world of GraalVM continues. Today I would like to share with you results of running Ratpack on GraalVM experiment. You will learn how to build native binary of a simple"><meta name="twitter:image" content="https://e.printstacktrace.blog/images/og/ratpack-graalvm-how-to-start.jpg"><meta name="twitter:creator" content="@wololock"><script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://e.printstacktrace.blog/ratpack-graalvm-how-to-start/"},"headline":"Ratpack on GraalVM - how to start?","image":{"@type":"ImageObject","url":"https://e.printstacktrace.blog/images/og/ratpack-graalvm-how-to-start.jpg"},"datePublished":"2019-02-15T02:10:39.000Z","dateModified":"2019-02-15T02:10:39.000Z","author":{"@type":"Person","name":"Szymon Stepniak"},"publisher":{"@type":"Organization","name":"e.printStackTrace(); // Blog","logo":{"@type":"ImageObject","url":"https://e.printstacktrace.blog/images/site-logo.jpg","height":60,"width":600}},"description":"The journey inside the exciting world of GraalVM continues. Today I would like to share with you results of running Ratpack on GraalVM experiment. You will learn how to build native binary of a simple \"Hello, World!\" Ratpack application. We will also run some diagnostics to see if running GraalVM executable produces better results than running JAR on a regular Oracle JDK.","keywords":"java,ratpack,graalvm,native-image,non-blocking"}</script></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#main-navbar" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><span>e.printStackTrace(); // Blog</span></a></div><div id="main-navbar" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/archives">Archive</a></li><li><a href="https://github.com/wololock/wololock.github.io">Github</a></li><li><a href="https://travis-ci.org/wololock/wololock.github.io"><img src="https://travis-ci.org/wololock/wololock.github.io.png?branch=develop"></a></li></ul></div></div></nav><header class="header-section"><div style="background-image:url(/images/ratpack-cookbook-bg.jpg)" class="intro-header"><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><div class="post-heading"><a href="/categories/ratpack-cookbook/" class="category">Ratpack Cookbook</a><h1>Ratpack on GraalVM - how to start?</h1><div class="post-meta"><ul><li><time datetime="2019-02-15T02:10:39.000Z" itemprop="datePublished">Feb 15, 2019</time></li><li>17 minutes read</li><li><a href="https://e.printstacktrace.blog/ratpack-graalvm-how-to-start/#disqus_thread">0 Comments</a></li></ul></div></div></div></div></div></div></header><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1"><article role="main" class="blog-post"><div class="paragraph"><p>The journey inside the exciting world of <a href="https://www.graalvm.org/" target="_blank" rel="noopener">GraalVM</a> continues. Today I would like to share with you results of running <a href="https://ratpack.io/" target="_blank" rel="noopener">Ratpack</a> on GraalVM experiment. You will learn how to build native binary of a simple "Hello, World!" Ratpack application. We will also run some diagnostics to see if running GraalVM executable produces better results than running JAR on a regular Oracle JDK.</p></div><a id="more"></a><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">The source code of <em>ratpack-graalvm-demo</em> application can be found here <a href="https://github.com/wololock/ratpack-graalvm-demo" target="_blank" rel="noopener">wololock/ratpack-graalvm-demo</a></td></tr></table></div><div class="sect1"><h2>Prerequisites</h2><div class="sectionbody"><div class="paragraph"><p>Below you can find information about the GraalVM and Ratpack versions I used in the experiment:</p></div><div class="ulist"><ul><li><p><strong>GraalVM</strong> 1.0.0-RC13 (the most recent version available while writing this blog post)</p></li><li><p><strong>Ratpack</strong> 1.6.0</p></li></ul></div><div class="admonitionblock tip"><table><tr><td class="icon"><i class="fa icon-tip" title="Tip"></i></td><td class="content">Don&#8217;t know how to install GraalVM on your machine? With SDKMAN! installing GraalVM is as easy as executing the following command in the console <code>sdk install java 1.0.0-rc-13-grl</code>.</td></tr></table></div></div></div><div class="sect1"><h2>Hello World application</h2><div class="sectionbody"><div class="paragraph"><p>We start the experiments with the simplest possible application - a good old Hello World app.</p></div><div class="listingblock"><div class="title">Listing 1. src/main/java/com/github/wololock/RatpackGraalDemoApp.java</div><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.github.wololock;
+
+import ratpack.server.RatpackServer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static ratpack.jackson.Jackson.json;
+
+final class RatpackGraalDemoApp {
+
+    public static void main(String[] args) throws Exception {
+        final Map&lt;String, String&gt; message = new HashMap&lt;&gt;();
+        message.put("message", "Hello, World!");
+
+        RatpackServer.start(server -&gt;
+                server.serverConfig(config -&gt; config.sysProps().development(false))
+                        .handlers(chain -&gt; chain.get(ctx -&gt; ctx.render(json(message))))
+        );
+    }
+}</code></pre></div></div><div class="paragraph"><p>When we send an HTTP request to to <code>localhost:5050</code> we will get the following response:</p></div><div class="listingblock"><div class="title">Listing 2. HTTP response of <code>(GET) localhost:5050</code> request</div><div class="content"><pre class="highlightjs highlight"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+content-encoding: gzip
+content-type: application/json
+transfer-encoding: chunked
+
+{
+    "message": "Hello, World!"
+}</code></pre></div></div></div></div><div class="sect1"><h2>Preparing for GraalVM</h2><div class="sectionbody"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">I strongly recommend reading <a href="https://medium.com/graalvm/instant-netty-startup-using-graalvm-native-image-generation-ed6f14ff7692" target="_blank" rel="noopener"><em>"Instant Netty Startup using GraalVM Native Image Generation"</em></a> article by <a href="https://twitter.com/cstancu" target="_blank" rel="noopener">Codrut Stancu</a>. It explains in details how to prepare Netty-based application for GraalVM native binary compilation.</td></tr></table></div><div class="paragraph"><p>We need to do some additional work to prepare our <em>"Hello World"</em> application for GraalVM.</p></div><div class="sect2"><h3>1. Reflection configuration</h3><div class="paragraph"><p>We will start with preparing a configuration file for classes used via Java reflection mechanism. GraalVM uses <a href="https://github.com/oracle/graal/tree/master/substratevm" target="_blank" rel="noopener">Substrate VM</a> - a framework that allows aggressive ahead-of-time optimizations. Classes, methods or fields accessed via reflection have to be known at the compile time to make AOT compilation possible. Substrate VM resolves most of the basic reflection calls like <code>Class.forName(&#8230;&#8203;)</code>, but in more complex scenarios it requires additional information to be provided.</p></div><div class="listingblock"><div class="title">Listing 3. reflections.json</div><div class="content"><pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "name": "io.netty.channel.socket.nio.NioServerSocketChannel",
+    "methods": [
+      {
+        "name": "&lt;init&gt;",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.github.benmanes.caffeine.cache.SSMS",
+    "methods": [
+      {
+        "name": "&lt;init&gt;",
+        "parameterTypes": ["com.github.benmanes.caffeine.cache.Caffeine", "com.github.benmanes.caffeine.cache.CacheLoader", "boolean"]
+      }
+    ]
+  },
+  {
+    "name": "com.github.benmanes.caffeine.cache.PSMS",
+    "methods": [
+      {
+        "name": "&lt;init&gt;"
+      }
+    ]
+  }
+]</code></pre></div></div><div class="paragraph"><p>In case of our demo app we need to provide information about these 3 classes. <code>SSMS</code> and <code>PSMS</code> are Caffeine caching library generated classes that are used to initialize paths handler internal cache.</p></div></div><div class="sect2"><h3>2. Dynamic proxies configuration</h3><div class="paragraph"><p>To make dependency injection via Guice possible, we need to <a href="https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md#manual-configuration" target="_blank" rel="noopener">generate dynamic proxies</a> at the compile time. It requires defining a list of interfaces those dynamic proxies implement. In our case we only have to configure <code>java.lang.reflect.TypeVariable</code> interface.</p></div><div class="listingblock"><div class="title">Listing 4. proxies.json</div><div class="content"><pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  ["java.lang.reflect.TypeVariable"]
+]</code></pre></div></div></div><div class="sect2"><h3>3. Unsafe memory access configuration</h3><div class="paragraph"><p>Using <code>sun.misc.Unsafe</code> in Substrate VM generates <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md#unsafe-memory-access" target="_blank" rel="noopener">another limitations</a>. Codrut in his <em>"Instant Netty Startup using GraalVM Native Image Generation"</em> article explained which <code>sun.misc.Unsafe</code> usages <a href="https://medium.com/graalvm/instant-netty-startup-using-graalvm-native-image-generation-ed6f14ff7692#020c" target="_blank" rel="noopener">require additional configuration</a> in Netty-based application. It applies to our demo application as well + we need to configure Caffeine&#8217;s <code>com.github.benmanes.caffeine.cache.UnsafeRefArrayAccess</code> class. Let&#8217;s add the following static classes to the main application class.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.github.wololock;
+
+import com.oracle.svm.core.annotate.Alias;
+import com.oracle.svm.core.annotate.RecomputeFieldValue;
+import com.oracle.svm.core.annotate.TargetClass;
+import ratpack.server.RatpackServer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static ratpack.jackson.Jackson.json;
+
+final class RatpackGraalDemoApp {
+
+    public static void main(String[] args) throws Exception {
+        final Map&lt;String, String&gt; message = new HashMap&lt;&gt;();
+        message.put("message", "Hello, World!");
+
+        RatpackServer.start(server -&gt;
+                server.serverConfig(config -&gt; config.sysProps().development(false))
+                        .handlers(chain -&gt; chain.get(ctx -&gt; ctx.render(json(message))))
+        );
+    }
+
+    @TargetClass(className = "io.netty.util.internal.PlatformDependent0")
+    static final class Target_io_netty_util_internal_PlatformDependent0 {
+        @Alias
+        @RecomputeFieldValue(kind = RecomputeFieldValue.Kind.FieldOffset, declClassName = "java.nio.Buffer", name = "address")
+        private static long ADDRESS_FIELD_OFFSET;
+    }
+
+    @TargetClass(className = "io.netty.util.internal.CleanerJava6")
+    static final class Target_io_netty_util_internal_CleanerJava6 {
+        @Alias
+        @RecomputeFieldValue(kind = RecomputeFieldValue.Kind.FieldOffset, declClassName = "java.nio.DirectByteBuffer", name = "cleaner")
+        private static long CLEANER_FIELD_OFFSET;
+    }
+
+    @TargetClass(className = "io.netty.util.internal.shaded.org.jctools.util.UnsafeRefArrayAccess")
+    static final class Target_io_netty_util_internal_shaded_org_jctools_util_UnsafeRefArrayAccess {
+        @Alias
+        @RecomputeFieldValue(kind = RecomputeFieldValue.Kind.ArrayIndexShift, declClass = Object[].class)
+        public static int REF_ELEMENT_SHIFT;
+    }
+
+    @TargetClass(className = "com.github.benmanes.caffeine.cache.UnsafeRefArrayAccess")
+    static final class Target_com_github_benmanes_caffeine_cache_UnsafeRefArrayAccess {
+        @Alias
+        @RecomputeFieldValue(kind = RecomputeFieldValue.Kind.ArrayIndexShift, declClass = Object[].class)
+        public static int REF_ELEMENT_SHIFT;
+    }
+}</code></pre></div></div><div class="paragraph"><p>Of course it also means that we need to add Substrate SDK to the <code>build.gradle</code>.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.6.0"
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.4"
+    }
+}
+
+apply plugin: "io.ratpack.ratpack-java"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "idea"
+
+repositories {
+    jcenter()
+}
+
+mainClassName = 'com.github.wololock.RatpackGraalDemoApp'
+
+dependencies {
+    runtime 'org.slf4j:slf4j-simple:1.7.25'
+
+    compile 'com.oracle.substratevm:svm:1.0.0-rc12' <i class="conum" data-value="1"></i><b>(1)</b>
+
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+}</code></pre></div></div><div class="colist arabic"><table><tr><td><i class="conum" data-value="1"></i><b>1</b></td><td>Substrate SDK dependency.</td></tr></table></div></div></div></div><div class="sect1"><h2>Building native binary</h2><div class="sectionbody"><div class="paragraph"><p>We are ready to compile native binary. We use <code>native-image</code> command with the following parameters:</p></div><div class="listingblock"><div class="title">Listing 5. build-native-image.sh</div><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">native-image --no-server \
+    -jar build/libs/ratpack-graalvm-demo-all.jar \
+    -H:Name=ratpack-graalvm-demo \
+    -H:EnableURLProtocols=http \
+    -H:+AllowVMInspection \
+    -H:+ReportUnsupportedElementsAtRuntime \
+    -H:ReflectionConfigurationFiles=reflections.json \
+    -H:DynamicProxyConfigurationFiles=proxies.json \
+    --allow-incomplete-classpath \
+    --delay-class-initialization-to-runtime=io.netty.handler.codec.http.HttpObjectEncoder,io.netty.handler.ssl.ReferenceCountedOpenSslEngine,io.netty.handler.ssl.ReferenceCountedOpenSslClientContext,io.netty.handler.ssl.ReferenceCountedOpenSslServerContext,io.netty.handler.ssl.JdkNpnApplicationProtocolNegotiator,io.netty.handler.ssl.JettyNpnSslEngine,io.netty.handler.ssl.ConscryptAlpnSslEngine,io.netty.util.internal.logging.Log4JLogger \
+    -Dratpack.epoll.disable=true <i class="conum" data-value="1"></i><b>(1)</b></code></pre></div></div><div class="paragraph"><p>As you can see in <em class="conum" data-value="1"></em> we disabled Epoll transport to use NIO instead. The reason for that is because <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md#java-native-interface-jni" target="_blank" rel="noopener">JNI support is limited</a> and at least at the moment all tries to run Ratpack with Epoll transport on Linux ends with the following exception:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">[main] INFO ratpack.server.RatpackServer - Starting server...
+Exception in thread "main" ratpack.api.UncheckedException: java.lang.reflect.InvocationTargetException
+	at ratpack.util.Exceptions.uncheck(Exceptions.java:54)
+	at ratpack.util.internal.TransportDetector$NativeTransportImpl.eventLoopGroup(TransportDetector.java:229)
+	at ratpack.util.internal.TransportDetector$NativeTransport.eventLoopGroup(TransportDetector.java:133)
+	at ratpack.util.internal.TransportDetector.eventLoopGroup(TransportDetector.java:65)
+	at ratpack.exec.internal.DefaultExecController.&lt;init&gt;(DefaultExecController.java:61)
+	at ratpack.server.internal.DefaultRatpackServer.start(DefaultRatpackServer.java:126)
+	at ratpack.server.RatpackServer.start(RatpackServer.java:93)
+	at com.github.wololock.RatpackGraalDemoApp.main(RatpackGraalDemoApp.java:12)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at ratpack.util.internal.TransportDetector$NativeTransportImpl.eventLoopGroup(TransportDetector.java:227)
+	... 6 more
+Caused by: java.lang.UnsatisfiedLinkError: io.netty.channel.epoll.Native.epollCreate()I [symbol: Java_io_netty_channel_epoll_Native_epollCreate or Java_io_netty_channel_epoll_Native_epollCreate__]
+	at com.oracle.svm.jni.access.JNINativeLinkage.getOrFindEntryPoint(JNINativeLinkage.java:145)
+	at com.oracle.svm.jni.JNIGeneratedMethodSupport.nativeCallAddress(JNIGeneratedMethodSupport.java:54)
+	at io.netty.channel.epoll.Native.epollCreate(Native.java)
+	at io.netty.channel.epoll.Native.newEpollCreate(Native.java:107)
+	at io.netty.channel.epoll.EpollEventLoop.&lt;init&gt;(EpollEventLoop.java:100)
+	at io.netty.channel.epoll.EpollEventLoopGroup.newChild(EpollEventLoopGroup.java:135)
+	at io.netty.channel.epoll.EpollEventLoopGroup.newChild(EpollEventLoopGroup.java:35)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.&lt;init&gt;(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.&lt;init&gt;(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.&lt;init&gt;(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.&lt;init&gt;(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.epoll.EpollEventLoopGroup.&lt;init&gt;(EpollEventLoopGroup.java:104)
+	at io.netty.channel.epoll.EpollEventLoopGroup.&lt;init&gt;(EpollEventLoopGroup.java:91)
+	at io.netty.channel.epoll.EpollEventLoopGroup.&lt;init&gt;(EpollEventLoopGroup.java:68)</code></pre></div></div><div class="paragraph"><p>I will be exploring Epoll support and will post an update when get the working example of Ratpack application with Epoll transport on GraalVM.</p></div></div></div><div class="sect1"><h2>Running the application</h2><div class="sectionbody"><div class="paragraph"><p>At this point we have <code>ratpack-graalvm-demo</code> binary file compiled and ready to use.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ratpack-graalvm-demo [master] % ls -lah ratpack-graalvm-demo
+-rwxrwxr-x. 1 wololock wololock 24M 02-15 04:25 ratpack-graalvm-demo</code></pre></div></div><div class="paragraph"><p>As you can see a single <code>ratpack-graalvm-demo</code> file is 24 MB size. Let&#8217;s run it and execute HTTP request to see if it works.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ratpack-graalvm-demo [master] % ./ratpack-graalvm-demo
+[main] INFO ratpack.server.RatpackServer - Starting server...
+[main] INFO ratpack.server.RatpackServer - Building registry...
+[main] INFO ratpack.server.RatpackServer - Ratpack started for http://localhost:5050</code></pre></div></div><div class="paragraph"><p>The first thing you will notice is that the server is ready almost instantly. Ratpack application run on a regular JVM starts quickly (in about 550-600 milliseconds), but this one starts in a blink of an eye.</p></div><div class="paragraph"><p>Let&#8217;s actually try to measure startup time of regular Java and GraalVM Ratpack application. I will add <code>System.exit(0)</code> in the end of the <code>main</code> method so the application shut down right after it becomes ready to handle HTTP connections.</p></div><script id="asciicast-227675" src="https://asciinema.org/a/227675.js" async></script><div class="paragraph"><p>The difference is <strong>HUGE</strong>! Let&#8217;s compare best results - GraalVM&#8217;s best <strong>10</strong> milliseconds result versus Oracle JDK&#8217;s best <strong>581</strong> milliseconds result. It makes the difference.</p></div></div></div><div class="sect1"><h2>Benchmark</h2><div class="sectionbody"><div class="paragraph"><p>Application startup time is one thing. It&#8217;s time to run more important comparison test. Let&#8217;s compare the throughput of both, GraalVM and Oracle JDK runtime environments.</p></div><div class="paragraph"><p>We will start with small amount of requests, so the Oracle JDK won&#8217;t have enough time to warmup properly. In this test we use <a href="https://httpd.apache.org/docs/2.4/programs/ab.html" target="_blank" rel="noopener">Apache Bench</a> tool and we execute 200 concurrent requests with total of 1000 requests. Let&#8217;s start with GraalVM.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">~ % ab -c 200 -n 1000 http://localhost:5050/
+This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            5050
+
+Document Path:          /
+Document Length:        27 bytes
+
+Concurrency Level:      200
+Time taken for tests:   0.090 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      117000 bytes
+HTML transferred:       27000 bytes
+Requests per second:    11153.00 [#/sec] (mean)
+Time per request:       17.932 [ms] (mean)
+Time per request:       0.090 [ms] (mean, across all concurrent requests)
+Transfer rate:          1274.32 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    4   1.2      4       6
+Processing:     1    7   4.8      5      22
+Waiting:        1    6   4.7      4      19
+Total:          6   11   4.2      9      23
+
+Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%      9
+  75%     10
+  80%     12
+  90%     20
+  95%     22
+  98%     22
+  99%     22
+ 100%     23 (longest request)</code></pre></div></div><div class="paragraph"><p>That was fast. Now let&#8217;s see regular Oracle JDK in action.</p></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">I start demo application with the following command <code>java -jar build/libs/ratpack-graalvm-demo-all.jar -Dratpack.epoll.disable=true</code></td></tr></table></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">ab -c 200 -n 1000 http://localhost:5050/
+This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            5050
+
+Document Path:          /
+Document Length:        27 bytes
+
+Concurrency Level:      200
+Time taken for tests:   0.335 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      117000 bytes
+HTML transferred:       27000 bytes
+Requests per second:    2985.77 [#/sec] (mean)
+Time per request:       66.984 [ms] (mean)
+Time per request:       0.335 [ms] (mean, across all concurrent requests)
+Transfer rate:          341.15 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   1.8      0       7
+Processing:     5   29  13.3     25      98
+Waiting:        5   29  13.3     25      94
+Total:          5   30  13.7     25      98
+
+Percentage of the requests served within a certain time (ms)
+  50%     25
+  66%     31
+  75%     36
+  80%     39
+  90%     47
+  95%     56
+  98%     70
+  99%     83
+ 100%     98 (longest request)</code></pre></div></div><div class="paragraph"><p>The difference between the cold Oracle JDK and GraalVM is huge:</p></div><div class="ulist"><ul><li><p><strong>17.93</strong> ms vs. <strong>66.98</strong> ms mean time per request in GraalVM' favour.</p></li><li><p><strong>11153</strong> vs. <strong>2985</strong> requests per second in GraalVM&#8217;s favour.</p></li></ul></div><div class="paragraph"><p>But let&#8217;s be fair - Oracle JDK shows its full potential when JIT jumps in and runs its optimizations. In the next round we will let him warmup correctly and then we can compare the results. We will run 800 concurrent requests with total 500,000 requests and we do it twice - the first run will be for warmup purpose and we will take the second result into account only. Let&#8217;s start with GraalVM.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">ab -c 800 -n 500000 http://localhost:5050/
+This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 50000 requests
+Completed 100000 requests
+Completed 150000 requests
+Completed 200000 requests
+Completed 250000 requests
+Completed 300000 requests
+Completed 350000 requests
+Completed 400000 requests
+Completed 450000 requests
+Completed 500000 requests
+Finished 500000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            5050
+
+Document Path:          /
+Document Length:        27 bytes
+
+Concurrency Level:      800
+Time taken for tests:   40.725 seconds
+Complete requests:      500000
+Failed requests:        0
+Total transferred:      58500000 bytes
+HTML transferred:       13500000 bytes
+Requests per second:    12277.48 [#/sec] (mean)
+Time per request:       65.160 [ms] (mean)
+Time per request:       0.081 [ms] (mean, across all concurrent requests)
+Transfer rate:          1402.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   37 110.8     25    3130
+Processing:     3   28   9.4     27     117
+Waiting:        0   18   8.3     17      90
+Total:         18   65 112.0     55    3156
+
+Percentage of the requests served within a certain time (ms)
+  50%     55
+  66%     61
+  75%     63
+  80%     64
+  90%     68
+  95%     72
+  98%     84
+  99%   1072
+ 100%   3156 (longest request)</code></pre></div></div><div class="paragraph"><p>Now let&#8217;s do the same with Oracle JDK.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">ab -c 800 -n 500000 http://localhost:5050/
+This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 50000 requests
+Completed 100000 requests
+Completed 150000 requests
+Completed 200000 requests
+Completed 250000 requests
+Completed 300000 requests
+Completed 350000 requests
+Completed 400000 requests
+Completed 450000 requests
+Completed 500000 requests
+Finished 500000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            5050
+
+Document Path:          /
+Document Length:        27 bytes
+
+Concurrency Level:      800
+Time taken for tests:   35.889 seconds
+Complete requests:      500000
+Failed requests:        0
+Total transferred:      58500000 bytes
+HTML transferred:       13500000 bytes
+Requests per second:    13931.95 [#/sec] (mean)
+Time per request:       57.422 [ms] (mean)
+Time per request:       0.072 [ms] (mean, across all concurrent requests)
+Transfer rate:          1591.83 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   28   8.1     27    1034
+Processing:     2   30   7.7     30     249
+Waiting:        0   17   6.9     16     242
+Total:          6   57   5.3     57    1065
+
+Percentage of the requests served within a certain time (ms)
+  50%     57
+  66%     58
+  75%     59
+  80%     60
+  90%     62
+  95%     64
+  98%     66
+  99%     68
+ 100%   1065 (longest request)</code></pre></div></div><div class="paragraph"><p>It looks like if we give Oracle JDK enough time to warm up, it runs a little bit more efficient than the GraalVM application. Take a look at these two charts to see tha main difference.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/ratpack-graalvm-rps-benchmark.png"><img src="/images/ratpack-graalvm-rps-benchmark.png" alt="ratpack graalvm rps benchmark"></a></div></div></div></div><div class="paragraph"><p>If we compare RPS between cold Oracle JDK and GraalVM there is no doubt that GraalVM does better. But if we only give a regular Oracle JDK a chance to warm up, it turns out that it can actually handle almost 1700 more requests. This is a significant difference.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/ratpack-graalvm-latency-benchmark.png"><img src="/images/ratpack-graalvm-latency-benchmark.png" alt="ratpack graalvm latency benchmark"></a></div></div></div></div><div class="paragraph"><p>Latency benchmark also reveals an interesting details. GraalVM wins when we compare it to cold Oracle JDK and we let both application handle a fairly small traffic (200 requests with total of 1000). But if we increase the number of concurrent requests to 800 and we need to handle the total of 500,000 requests, warmed up Oracle JDK works much better. While GraalVM slows down to the ~65ms per request when we increase the traffic, Oracle JDK speeds up to ~57ms per request.</p></div><div class="paragraph"><p>There are also two things worth mentioning. I&#8217;ve tried to execute more concurrent requests, but it turned out that GraalVM stars throwing <code>IOException</code> when I increased the number of concurrent requests to 1,000.</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[main] INFO ratpack.server.RatpackServer - Starting server...
+[main] INFO ratpack.server.RatpackServer - Building registry...
+[main] INFO ratpack.server.RatpackServer - Ratpack started for http://localhost:5050
+[ratpack-compute-2-1] WARN io.netty.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.io.IOException: Accept failed
+	at com.oracle.svm.core.posix.PosixJavaNIOSubstitutions$Util_sun_nio_ch_ServerSocketChannelImpl.accept0(PosixJavaNIOSubstitutions.java:1261)
+	at sun.nio.ch.ServerSocketChannelImpl.accept0(ServerSocketChannelImpl.java:1188)
+	at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:422)
+	at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:250)
+	at io.netty.util.internal.SocketUtils$5.run(SocketUtils.java:110)
+	at io.netty.util.internal.SocketUtils$5.run(SocketUtils.java:107)
+	at java.security.AccessController.doPrivileged(AccessController.java:82)
+	at io.netty.util.internal.SocketUtils.accept(SocketUtils.java:107)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doReadMessages(NioServerSocketChannel.java:143)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:75)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:656)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysPlain(NioEventLoop.java:556)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:510)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:470)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:909)
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$0(DefaultExecController.java:137)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+	at com.oracle.svm.core.thread.JavaThreads.threadStartRoutine(JavaThreads.java:481)
+	at com.oracle.svm.core.posix.thread.PosixJavaThreads.pthreadStartRoutine(PosixJavaThreads.java:193)</code></pre></div></div><div class="paragraph"><p>Oracle JDK at the same time was able to handle 1,000 concurrent requests without any issue.</p></div><div class="paragraph"><p>And the last thing - memory consumption. GraalVM does much better when it comes to memory consumption right after the startup - the demo application consumes around 30 MB after startup on GraalVM and about 90 MB when run on Oracle JDK. However, when application starts handling firsts requests, memory consumptions jumps significantly - GraalVM consumes around 300 MB, while Oracle JDK consumes around 150 MB only.</p></div></div></div><div class="sect1"><h2>Conclusion</h2><div class="sectionbody"><div class="paragraph"><p>I must admit that the final benchmark results surprised me a bit. But also made me happy at the same time. This demo application is not a rock-solid proof - if we used much larger and much more complicated Ratpack application we could get completely different results. However, it proved that in some use cases Ratpack application does not need GraalVM to run fast. GraalVM may offer much faster startup, but fine tuned and properly warmed up JDK may perform much better in terms of metrics like RPS or latency in milliseconds.</p></div><div class="paragraph"><p>I hope you learned something new from this blog post. I&#8217;m really happy I have finally run Ratpack example on GraalVM. It took me hours to make it running and I almost gave up, but I couldn&#8217;t accept the failure. The final result makes me happy even more. It&#8217;s 06:03 AM. Time to go sleep. See you soon!</p></div></div></div><section class="post-tags"><a href="/tags/java/" class="tag post-meta">#java</a><a href="/tags/ratpack/" class="tag post-meta">#ratpack</a><a href="/tags/graalvm/" class="tag post-meta">#graalvm</a><a href="/tags/native-image/" class="tag post-meta">#native-image</a><a href="/tags/non-blocking/" class="tag post-meta">#non-blocking</a></section><footer class="post-footer"><img src="https://www.gravatar.com/avatar/b22c1842c6e8f7f2b9b3ed8c0d4efb4d?s=200" class="img-responsive img-circle"><div class="row author"><div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1"><h4>Szymon Stepniak</h4><p>Groovista, Upwork's Top Rated freelancer, Toruń Java User Group founder, open&nbsp;source contributor, Stack Overflow addict, bedroom guitar player. I walk through e.printStackTrace() so you don't have to.</p><ul class="social-links"><li><a href="https://feeds.feedburner.com/Eprintstacktracenet" onclick="return window.open(this.href),!1"><span class="fa fa-rss"></span></a></li><li><a href="https://twitter.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-twitter"></span></a></li><li><a href="https://github.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-github"></span></a></li><li><a href="https://stackoverflow.com/users/2194470/szymon-stepniak?tab=profile" onclick="return window.open(this.href),!1"><span class="fa fa-stack-overflow"></span></a></li><li><a href="mailto:szymon.stepniak@gmail.com" onclick="return window.open(this.href),!1"><span class="fa fa-envelope"></span></a></li><li><a href="https://www.linkedin.com/in/szymon-stępniak-9a0b1630" onclick="return window.open(this.href),!1"><span class="fa fa-linkedin"></span></a></li></ul></div></div></footer><section class="related-posts"><h2>You may also like</h2><div class="row"><div class="col-lg-4"><a href="/graalvm-native-image-inside-docker-container-does-it-make-sense/"><img src="/images/og/graalvm-docker-groovy.jpg" class="img-responsive"><h3>GraalVM native image inside docker container - does it make sense?</h3></a><p>We have learned how to create GraalVM native image from standalone Groovy script in the previous blog post. Today we continue the experiments, and this time we are going to create a Docker image to...</p></div><div class="col-lg-4"><a href="/graalvm-groovy-grape-creating-native-image-of-standalone-script/"><img src="/images/og/graalvm-groovy-grape.jpg" class="img-responsive"><h3>GraalVM with Groovy and Grape - creating native image of a standalone script</h3></a><p>GraalVM 1.0.0-RC11 was released yesterday, and I thought it would be an excellent excuse to play around with it a while. I decided to create a simple Groovy script that uses Grape dependency manage...</p></div><div class="col-lg-4"><a href="/micronaut-non-blocking-and-async-part-2/"><img src="/images/og/micronaut-nonblocking-part2.jpg" class="img-responsive"><h3>Non-blocking and async Micronaut - quick start (part 2)</h3></a><p>Welcome to the part 2 of "Non-blocking and async Micronaut" article. In the previous part we have explained the idea behind this demo and we have implemented product-service - a simple endpoint tha...</p></div></div></section></article><nav role="pagination" class="pagination"><a href="/graalvm-native-image-inside-docker-container-does-it-make-sense/" class="pull-right btn">Previous post →</a></nav><div class="disqus-comments"><div class="comments"><div id="disqus_thread"></div></div></div><script>var url_parts=window.location.href.split("?"),disqus_url=url_parts[0];!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="//eprintstacktrace.disqus.com/embed.js",(document.head||d.body).appendChild(t)}()</script></div></div></div><script id="dsq-count-scr" src="//eprintstacktrace.disqus.com/count.js"></script><footer class="site-footer"><div class="container-fluid"><div class="row"><div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1"><div class="row"><div class="col-lg-4"><h4>e.printstacktrace.blog © 2019</h4><p><em>"I walk through e.printStackTrace() so you don't have to"</em></p><p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a></p></div><div class="col-lg-4"><h4 class="marked">Recent articles</h4><section class="recent-posts"><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/ratpack-graalvm-how-to-start/">Ratpack on GraalVM - how to start?</a></li><li class="post-list-item"><a class="post-list-link" href="/graalvm-native-image-inside-docker-container-does-it-make-sense/">GraalVM native image inside docker container - does it make sense?</a></li><li class="post-list-item"><a class="post-list-link" href="/graalvm-groovy-grape-creating-native-image-of-standalone-script/">GraalVM with Groovy and Grape - creating native image of a standalone script</a></li><li class="post-list-item"><a class="post-list-link" href="/deep-work-book-review/">Deep Work - book review</a></li><li class="post-list-item"><a class="post-list-link" href="/programming-groovy-2-book-review/">Programming Groovy 2 - book review</a></li><li class="post-list-item"><a class="post-list-link" href="/spock-assertion-inside-if-statement-doesnt-work-why/">Spock assertion inside if-statement doesn't work - why?</a></li></ul></section></div><div class="col-lg-4"><h4 class="marked">Stay connected</h4><div class="social-links"><ul><li><a href="https://feeds.feedburner.com/Eprintstacktracenet" onclick="return window.open(this.href),!1"><span class="fa fa-rss"></span></a></li><li><a href="https://twitter.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-twitter"></span></a></li><li><a href="https://github.com/wololock" onclick="return window.open(this.href),!1"><span class="fa fa-github"></span></a></li><li><a href="https://stackoverflow.com/users/2194470/szymon-stepniak?tab=profile" onclick="return window.open(this.href),!1"><span class="fa fa-stack-overflow"></span></a></li><li><a href="mailto:szymon.stepniak@gmail.com" onclick="return window.open(this.href),!1"><span class="fa fa-envelope"></span></a></li><li><a href="https://www.linkedin.com/in/szymon-stępniak-9a0b1630" onclick="return window.open(this.href),!1"><span class="fa fa-linkedin"></span></a></li></ul></div><h4 class="marked">Most popular tags</h4><section class="tagcloud"><a href="/tags/async/" style="font-size:14pt;color:#7e7e7e">async</a> <a href="/tags/career/" style="font-size:8pt;color:#6a6a6a">career</a> <a href="/tags/factorial/" style="font-size:8pt;color:#6a6a6a">factorial</a> <a href="/tags/graalvm/" style="font-size:20pt;color:#929292">graalvm</a> <a href="/tags/groovy/" style="font-size:32pt;color:#bababa">groovy</a> <a href="/tags/haskell/" style="font-size:14pt;color:#7e7e7e">haskell</a> <a href="/tags/java/" style="font-size:26pt;color:#a6a6a6">java</a> <a href="/tags/java-8/" style="font-size:14pt;color:#7e7e7e">java-8</a> <a href="/tags/jmh/" style="font-size:8pt;color:#6a6a6a">jmh</a> <a href="/tags/junit/" style="font-size:8pt;color:#6a6a6a">junit</a> <a href="/tags/learning/" style="font-size:8pt;color:#6a6a6a">learning</a> <a href="/tags/metaprogramming/" style="font-size:8pt;color:#6a6a6a">metaprogramming</a> <a href="/tags/micronaut/" style="font-size:14pt;color:#7e7e7e">micronaut</a> <a href="/tags/native-image/" style="font-size:20pt;color:#929292">native-image</a> <a href="/tags/non-blocking/" style="font-size:20pt;color:#929292">non-blocking</a> <a href="/tags/progress/" style="font-size:8pt;color:#6a6a6a">progress</a> <a href="/tags/ratpack/" style="font-size:14pt;color:#7e7e7e">ratpack</a> <a href="/tags/reactive-programming/" style="font-size:14pt;color:#7e7e7e">reactive-programming</a> <a href="/tags/rxjava/" style="font-size:14pt;color:#7e7e7e">rxjava</a> <a href="/tags/session/" style="font-size:8pt;color:#6a6a6a">session</a> <a href="/tags/split/" style="font-size:8pt;color:#6a6a6a">split</a> <a href="/tags/spock/" style="font-size:14pt;color:#7e7e7e">spock</a> <a href="/tags/stackoverflow/" style="font-size:14pt;color:#7e7e7e">stackoverflow</a> <a href="/tags/tail-recursion/" style="font-size:8pt;color:#6a6a6a">tail-recursion</a> <a href="/tags/unit-test/" style="font-size:14pt;color:#7e7e7e">unit-test</a></section></div></div></div></div></div><section class="poweredby"><ul class="text-center"><li><span>Published with </span><a href="https://hexo.io" onclick="return window.open(this.href),!1"><img src="/img/logo-hexo.png"></a></li><li><span>Hosted on </span><a href="https://github.com/wololock/wololock.github.io" onclick="return window.open(this.href),!1"><img src="/img/logo-github.png"></a></li><li><span>Deployed with </span><a href="https://travis-ci.org/wololock/wololock.github.io" onclick="return window.open(this.href),!1"><img src="/img/logo-travis.png"></a></li></ul></section></footer><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/js/main.js?v=5"></script><script src="/js/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad()</script><script>"localhost"!==window.location.hostname&&"127.0.0.1"!==window.location.hostname&&(!function(a,e,n,o,t,c,g){a.GoogleAnalyticsObject=t,a.ga=a.ga||function(){(a.ga.q=a.ga.q||[]).push(arguments)},a.ga.l=1*new Date,c=e.createElement(n),g=e.getElementsByTagName(n)[0],c.async=1,c.src="//www.google-analytics.com/analytics.js",g.parentNode.insertBefore(c,g)}(window,document,"script",0,"ga"),ga("create","UA-42400890-5","auto"),ga("send","pageview"))</script></body></html>
