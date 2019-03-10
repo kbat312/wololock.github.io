@@ -157,20 +157,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/git/</loc>
-        <lastmod>2018-09-24T21:18:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/github/</loc>
-        <lastmod>2018-09-24T21:18:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/equals/</loc>
         <lastmod>2018-09-29T09:13:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -565,6 +551,34 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/release/</loc>
         <lastmod>2019-03-02T23:17:25.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/git/</loc>
+        <lastmod>2019-03-10T14:24:29.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/github/</loc>
+        <lastmod>2019-03-10T14:24:29.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/gpg/</loc>
+        <lastmod>2019-03-10T14:24:29.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/intellij-idea/</loc>
+        <lastmod>2019-03-10T14:24:29.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
