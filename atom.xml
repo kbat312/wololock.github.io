@@ -250,9 +250,9 @@
     
       <category term="spock" scheme="https://e.printstacktrace.blog/tags/spock/"/>
     
-      <category term="unit-testing" scheme="https://e.printstacktrace.blog/tags/unit-testing/"/>
-    
       <category term="testing" scheme="https://e.printstacktrace.blog/tags/testing/"/>
+    
+      <category term="unit-testing" scheme="https://e.printstacktrace.blog/tags/unit-testing/"/>
     
   </entry>
   
@@ -312,11 +312,11 @@
     
       <category term="progress" scheme="https://e.printstacktrace.blog/tags/progress/"/>
     
-      <category term="programming" scheme="https://e.printstacktrace.blog/tags/programming/"/>
-    
       <category term="aoc2018" scheme="https://e.printstacktrace.blog/tags/aoc2018/"/>
     
       <category term="advent-of-code" scheme="https://e.printstacktrace.blog/tags/advent-of-code/"/>
+    
+      <category term="programming" scheme="https://e.printstacktrace.blog/tags/programming/"/>
     
   </entry>
   
