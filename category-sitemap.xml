@@ -43,13 +43,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/categories/groovy-cookbook/</loc>
-        <lastmod>2019-02-20T13:08:23.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/categories/programmer-s-bookshelf/</loc>
         <lastmod>2019-03-02T23:17:25.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -59,6 +52,13 @@
     <url>
         <loc>https://e.printstacktrace.blog/categories/how-to/</loc>
         <lastmod>2019-03-16T11:44:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/categories/groovy-cookbook/</loc>
+        <lastmod>2019-03-17T19:13:27.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

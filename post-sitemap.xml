@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/groovy-regular-expressions-the-definitive-guide/</loc>
+        <lastmod>2019-03-17T19:13:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/intellij-idea-git-gpg-failed-to-sign-the-data/</loc>
         <lastmod>2019-03-16T11:44:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
