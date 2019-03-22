@@ -62,17 +62,17 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="regexp" scheme="https://e.printstacktrace.blog/tags/regexp/"/>
-    
-      <category term="regular-expressions" scheme="https://e.printstacktrace.blog/tags/regular-expressions/"/>
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
     
       <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
+    
+      <category term="regexp" scheme="https://e.printstacktrace.blog/tags/regexp/"/>
+    
+      <category term="regular-expressions" scheme="https://e.printstacktrace.blog/tags/regular-expressions/"/>
     
   </entry>
   
@@ -214,9 +214,9 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -332,9 +332,9 @@
       <category term="Tales from debugger" scheme="https://e.printstacktrace.blog/categories/tales-from-debugger/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="spock" scheme="https://e.printstacktrace.blog/tags/spock/"/>
     
@@ -430,13 +430,13 @@
     
       <category term="haskell" scheme="https://e.printstacktrace.blog/tags/haskell/"/>
     
+      <category term="combinations" scheme="https://e.printstacktrace.blog/tags/combinations/"/>
+    
       <category term="tail-recursion" scheme="https://e.printstacktrace.blog/tags/tail-recursion/"/>
     
       <category term="tail-call" scheme="https://e.printstacktrace.blog/tags/tail-call/"/>
     
       <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
-    
-      <category term="combinations" scheme="https://e.printstacktrace.blog/tags/combinations/"/>
     
   </entry>
   

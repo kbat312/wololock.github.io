@@ -556,20 +556,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/regexp/</loc>
-        <lastmod>2019-03-18T11:46:39.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/regular-expressions/</loc>
-        <lastmod>2019-03-18T11:46:39.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
         <lastmod>2019-03-18T11:46:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -578,6 +564,20 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
+        <lastmod>2019-03-18T11:46:39.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/regexp/</loc>
+        <lastmod>2019-03-18T11:46:39.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/regular-expressions/</loc>
         <lastmod>2019-03-18T11:46:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
