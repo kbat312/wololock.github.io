@@ -98,9 +98,9 @@
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
-    
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
+    
+      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
@@ -492,11 +492,11 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
+      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
+    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="factorial" scheme="https://e.printstacktrace.blog/tags/factorial/"/>
-    
-      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
     
       <category term="tail-recursion" scheme="https://e.printstacktrace.blog/tags/tail-recursion/"/>
     
