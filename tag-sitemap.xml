@@ -388,13 +388,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
-        <lastmod>2019-02-15T02:10:39.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
         <lastmod>2019-02-15T02:10:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -493,13 +486,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2019-03-18T11:46:39.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
         <lastmod>2019-03-18T11:46:39.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -591,13 +577,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/java/</loc>
-        <lastmod>2019-03-29T00:44:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/java-stream/</loc>
         <lastmod>2019-03-29T00:44:13.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -649,6 +628,48 @@
     <url>
         <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
         <lastmod>2019-03-29T00:44:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/java/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/netty/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/http/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/curl/</loc>
+        <lastmod>2019-04-01T08:12:52.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
