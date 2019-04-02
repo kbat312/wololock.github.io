@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/graalvm-heap-size-of-native-image-how-to-set-it/</loc>
+        <lastmod>2019-04-02T13:38:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/using-the-same-prefix-with-different-http-methods-in-ratpack/</loc>
         <lastmod>2019-04-01T08:12:52.000Z</lastmod>
         <changefreq>weekly</changefreq>
