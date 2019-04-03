@@ -44,16 +44,16 @@ HTTP/1.1 200     0.00 secs:      53 bytes ==&gt; GET  /
 
 Transactions:		       20000 hits
 Availability:		      100.00 %
-Elapsed time:		        4.31 secs
+Elapsed time:		        3.86 secs
 Data transferred:	        1.01 MB
 Response time:		        0.03 secs
-Transaction rate:	     4640.37 trans/sec
-Throughput:		        0.23 MB/sec
-Concurrency:		      143.19
+Transaction rate:	     5181.35 trans/sec
+Throughput:		        0.26 MB/sec
+Concurrency:		      152.01
 Successful transactions:       20000
 Failed transactions:	           0
-Longest transaction:	        3.14
-Shortest transaction:	        0.02</code></pre></div></div><div class="paragraph"><p>This time the garbage collector was much more active - here is the console log generated while the application was handling 20k requests:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./ratpack-graalvm-demo -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+VerboseGC +XX:+PrintHeapShape -Xmx64m
+Longest transaction:	        3.09
+Shortest transaction:	        0.01</code></pre></div></div><div class="paragraph"><p>This time the garbage collector was much more active - here is the console log generated while the application was handling 20k requests:</p></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./ratpack-graalvm-demo -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+VerboseGC +XX:+PrintHeapShape -Xmx64m
 [main] INFO ratpack.server.RatpackServer - Starting server...
 [main] INFO ratpack.server.RatpackServer - Building registry...
 [main] INFO ratpack.server.RatpackServer - Ratpack started for http://localhost:5050
