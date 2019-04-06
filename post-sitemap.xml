@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/spock-random-order-of-tests-how-to/</loc>
+        <lastmod>2019-04-06T08:52:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/graalvm-heap-size-of-native-image-how-to-set-it/</loc>
         <lastmod>2019-04-02T13:38:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
