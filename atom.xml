@@ -100,9 +100,9 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -222,11 +222,11 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
-      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
+    
+      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
@@ -344,9 +344,9 @@
       <category term="Ratpack Cookbook" scheme="https://e.printstacktrace.blog/categories/ratpack-cookbook/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -374,9 +374,9 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
-      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -492,11 +492,11 @@
       <category term="Tales from debugger" scheme="https://e.printstacktrace.blog/categories/tales-from-debugger/"/>
     
     
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="spock" scheme="https://e.printstacktrace.blog/tags/spock/"/>
-    
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="testing" scheme="https://e.printstacktrace.blog/tags/testing/"/>
     
@@ -618,11 +618,11 @@
       <category term="Groovy Cookbook" scheme="https://e.printstacktrace.blog/categories/groovy-cookbook/"/>
     
     
+      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
+    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="factorial" scheme="https://e.printstacktrace.blog/tags/factorial/"/>
-    
-      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
     
       <category term="tail-recursion" scheme="https://e.printstacktrace.blog/tags/tail-recursion/"/>
     
