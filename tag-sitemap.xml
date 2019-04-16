@@ -3,6 +3,62 @@
 
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/communication/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/leadership/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/safari-online/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/oreilly/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/team/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/reading/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/review/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/book/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/random/</loc>
         <lastmod>2019-04-09T06:58:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -52,14 +108,14 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
+        <loc>https://e.printstacktrace.blog/tags/java/</loc>
         <lastmod>2019-04-02T13:38:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/java/</loc>
+        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
         <lastmod>2019-04-02T13:38:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -129,13 +185,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/split/</loc>
-        <lastmod>2019-03-29T00:44:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/java-8/</loc>
         <lastmod>2019-03-29T00:44:13.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -144,6 +193,13 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/java-stream/</loc>
+        <lastmod>2019-03-29T00:44:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/split/</loc>
         <lastmod>2019-03-29T00:44:13.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -165,27 +221,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/pragmatic/</loc>
-        <lastmod>2019-03-26T16:50:06.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/reading/</loc>
-        <lastmod>2019-03-26T16:50:06.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/review/</loc>
-        <lastmod>2019-03-26T16:50:06.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/book/</loc>
         <lastmod>2019-03-26T16:50:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -367,14 +402,14 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/testing/</loc>
+        <loc>https://e.printstacktrace.blog/tags/unit-testing/</loc>
         <lastmod>2018-12-27T18:52:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/unit-testing/</loc>
+        <loc>https://e.printstacktrace.blog/tags/testing/</loc>
         <lastmod>2018-12-27T18:52:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

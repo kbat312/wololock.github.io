@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/debugging-teams-book-review/</loc>
+        <lastmod>2019-04-16T13:19:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/spock-random-order-of-tests-how-to/</loc>
         <lastmod>2019-04-09T06:58:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
