@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/graalvm-and-groovy-how-to-start/</loc>
+        <lastmod>2019-05-11T10:22:03.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/debugging-teams-book-review/</loc>
         <lastmod>2019-04-16T13:19:41.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -210,14 +218,6 @@
     <url>
         <loc>https://e.printstacktrace.blog/how-to-avoid-no-tests-were-found-when-using-junit5-with-groovy/</loc>
         <lastmod>2018-10-24T07:00:48.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/graalvm-and-groovy-how-to-start/</loc>
-        <lastmod>2018-10-03T21:28:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
