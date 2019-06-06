@@ -3,6 +3,55 @@
 
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/copenhagen/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/conference/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/gr8conf/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/micronaut/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/grails/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/regular-expressions/</loc>
         <lastmod>2019-06-05T09:23:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,13 +67,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
-        <lastmod>2019-06-05T09:23:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
         <lastmod>2019-06-05T09:23:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -52,28 +94,7 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/conference/</loc>
-        <lastmod>2019-05-14T06:40:36.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/gr8conf/</loc>
-        <lastmod>2019-05-14T06:40:36.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
-        <lastmod>2019-05-14T06:40:36.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/ratpack/</loc>
         <lastmod>2019-05-14T06:40:36.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -542,13 +563,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/micronaut/</loc>
-        <lastmod>2018-10-30T09:53:18.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/jep101/</loc>
         <lastmod>2018-10-28T05:50:57.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -732,13 +746,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/grails-2-4/</loc>
-        <lastmod>2017-09-30T05:18:20.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/grails/</loc>
         <lastmod>2017-09-30T05:18:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
