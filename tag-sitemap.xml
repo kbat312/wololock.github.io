@@ -3,6 +3,48 @@
 
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/tail-recursive/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/closures/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/recursion/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/copenhagen/</loc>
         <lastmod>2019-06-06T10:03:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -38,13 +80,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/grails/</loc>
         <lastmod>2019-06-06T10:03:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -60,20 +95,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/regexp/</loc>
-        <lastmod>2019-06-05T09:23:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
-        <lastmod>2019-06-05T09:23:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
         <lastmod>2019-06-05T09:23:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -473,13 +494,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/factorial/</loc>
-        <lastmod>2018-12-18T09:15:17.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/recursion/</loc>
         <lastmod>2018-12-18T09:15:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
