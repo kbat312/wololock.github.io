@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
+        <lastmod>2019-11-07T18:37:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
+        <lastmod>2019-11-07T18:37:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/java/</loc>
+        <lastmod>2019-11-07T18:37:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-11-07T18:37:16.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/maven/</loc>
         <lastmod>2019-11-06T18:34:01.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -52,35 +80,7 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/java/</loc>
-        <lastmod>2019-11-06T18:34:01.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
-        <lastmod>2019-11-06T18:34:01.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
-        <lastmod>2019-11-05T20:57:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/grape/</loc>
-        <lastmod>2019-11-05T20:57:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
         <lastmod>2019-11-05T20:57:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
