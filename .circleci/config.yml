@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     branches:
-      ignore: circleci
+      ignore: master
     docker:
       - image: circleci/node:10
     steps:
