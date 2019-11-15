@@ -31,13 +31,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/docker/</loc>
-        <lastmod>2019-11-13T08:54:22.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/devops/</loc>
         <lastmod>2019-11-13T08:54:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -46,6 +39,13 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/sdkman/</loc>
+        <lastmod>2019-11-13T08:54:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/docker/</loc>
         <lastmod>2019-11-13T08:54:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
