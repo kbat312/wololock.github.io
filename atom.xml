@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://e.printstacktrace.blog/"/>
-  <updated>2019-11-13T08:54:22.000Z</updated>
+  <updated>2019-11-17T11:25:50.000Z</updated>
   <id>https://e.printstacktrace.blog/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Using CircleCI to deploy Hexo blog to GitHub Pages - how to set it up?</title>
+    <link href="https://e.printstacktrace.blog/using-circleci-to-deploy-hexo-blog-to-github-pages-how-to-set-it-up/"/>
+    <id>https://e.printstacktrace.blog/using-circleci-to-deploy-hexo-blog-to-github-pages-how-to-set-it-up/</id>
+    <published>2019-11-17T11:25:50.000Z</published>
+    <updated>2019-11-17T11:25:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="paragraph"><p>I was using Travis CI to execute <a href="https://travis-ci.org/wololock/wololock.github.io/builds" target="_blank" rel="noopener">271 builds</a> and deployments of this blog. Last Friday, I decided to experiment with <a href="https://circleci.com/" target="_blank" rel="noopener">CircleCI</a> and see if this could be a viable alternative to my current solution. In this blog post, I will explain why I decided to switch, and how to set up CircleCI to deploy Hexo blog to the GitHub Pages without much hustle.</p></div><a id="more"></a><div class="sect1"><h2 id="why-moving-away-from-travis-ci">Why moving away from Travis CI?</h2><div class="sectionbody"><div class="paragraph"><p>Travis CI is a great continuous integration server for any open source project. It&#8217;s <strong>easy</strong> to set up and use. It integrates with many <strong>popular building tools</strong> in a few steps. And the dashboard UI is <strong>clean</strong> and <strong>simple</strong>.</p></div><div class="paragraph"><p>However, I have found two major reasons to start considering alternative solutions. Firstly, the overall build and deployment times regularly kept increasing. The recent builds took 3 minutes 30 seconds, on average. The main reason for that was the time needed to set up a NodeJS build environment. The same <code>hexo deploy</code> command executed from my local dev environment required less than 40 seconds to complete.</p></div><div class="paragraph"><p>Secondly, Travis CI <strong>does not support SSH keys</strong> for public projects. The only way to push changes back to the GitHub repository is such a circumstance was to use one of the Personal Access Tokens. The token grants write permission to not only your Hexo blog repository but to all repositories your GitHub account has access to. Travis CI encrypts environment variables for security reasons. However, if someone hijacks your token (in one way or another), you are in trouble.</p></div></div></div><div class="sect1"><h2 id="why-circleci">Why CircleCI?</h2><div class="sectionbody"><div class="paragraph"><p>I made some experiments, and it turned out that CircleCI could solve both problems. The build and deploy pipeline runs more than two times faster (1 minute and 30 seconds on average). CircleCI supports SSH keys I could use to grant write permissions to a single GitHub repository.</p></div></div></div><div class="sect1"><h2 id="how-to-set-up-circleci-to-deploy-hexo-blog">How to set up CircleCI to deploy Hexo blog?</h2><div class="sectionbody"><div class="paragraph"><p>Now when you know, what was the reason to migrate to CircleCI, let&#8217;s take a closer look at how to set the pipeline.</p></div><div class="sect2"><h3 id="configuration">Configuration</h3><div class="paragraph"><p>To set up CircleCI, you need to create a file <code>.circleci/config.yml</code> in your root folder. Here is what my configuration looks like.</p></div><div class="listingblock"><div class="title">Listing 1. .circleci/config.yml</div><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">version: 2.1jobs:  build:    docker:      - image: circleci/node:10    steps:      - checkout      - run:          name: Install Hexo CLI          command: |            sudo npm install hexo-cli -g            npm install hexo --save      - restore_cache:          key: dependency-cache-{{ checksum "package.json" }}      - run:          name: Install NPM packages          command: npm install      - save_cache:          key: dependency-cache-{{ checksum "package.json" }}          paths:            - ./node_modules      - run:          name: Generate blog          command: hexo generate      - persist_to_workspace:          root: public          paths:            - "*"  deploy:    docker:      - image: circleci/node:10    steps:      - checkout      - restore_cache:          key: dependency-cache-{{ checksum "package.json" }}      - attach_workspace:          at: public      - run:          name: Install Hexo CLI          command: |            sudo npm install hexo-cli -g            npm install hexo --save      - add_ssh_keys:          fingerprints:            - "1d:0c:ea:28:8a:4f:f0:5d:98:e1:ca:93:0f:38:d6:ab"      - deploy:          name: Deploy website          command: |            git config --global user.name "Circle CI"            git config --global user.email "bot@circleci.com"            sh deploy.shworkflows:  version: 2  build:    jobs:      - build:          filters:            branches:              ignore:                - master                - gh-pages      - deploy:          requires:            - build          filters:            branches:              only: develop</code></pre></div></div><div class="paragraph"><p>There are two jobs I defined in the pipeline — the build job, and the deploy job. The first one gets executed on every commit. It installs all required dependencies in the container and generates the Hexo blog from the source code. It also uses the <code>persist_to_workspace</code> step. We use it to attach persisted workspace in the "deploy" job.</p></div><div class="paragraph"><p>The second job performs the deployment. It gets executed only from the <code>develop</code> branch, and it requires the "Build" job to succeed first. Here we also use a fingerprint of the SSH key used to authenticate with the GitHub repository.</p></div></div></div></div><div class="sect1"><h2 id="what-ssh-key-to-use">What SSH key to use?</h2><div class="sectionbody"><div class="paragraph"><p>Don&#8217;t use your personal SSH key. Generate a new one with an <code>ssh-keygen</code> tool instead.</p></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">Be careful when you generate a new key. It will ask you where to save the key file - do not override the default <code>~/.ssh/id_rsa</code> one. This is your personal key, and you don&#8217;t want to lose that one. Also, use an empty passphrase, so there is no prompt for the password needed.</td></tr></table></div><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ssh-keygen -t rsa -m PEM -C "bot@circleci.com"Generating public/private rsa key pair.Enter file in which to save the key (/home/wololock/.ssh/id_rsa): /tmp/this-key-is-not-used-anywhere-lolEnter passphrase (empty for no passphrase):Enter same passphrase again:Your identification has been saved in /tmp/this-key-is-not-used-anywhere-lol.Your public key has been saved in /tmp/this-key-is-not-used-anywhere-lol.pub.The key fingerprint is:SHA256:3K/RQpfR0sdJ4hv78JL/VSB10up0tuzTZnpvRodVtV0 bot@circleci.comThe key's randomart image is:+---[RSA 3072]----+|             .ooE||            .+o+B||            +o++=||       . .   =*o+||        S o o*.=o||         . +  Bo+||          o oo.++||           +  ooO||          .   .O*|+----[SHA256]-----+</code></pre></div></div><div class="paragraph"><p>Setting up CircleCI SSH permissions Go to your CircleCI project settings. You will find the "SSH Permissions" page under the "Permissions" label on the left side. Click on the "Add SSH Key" button. For the hostname, use <code>github.com</code> and paste your newly generated private key.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/circleci-new-ssh-key.jpg"><img src="/images/circleci-new-ssh-key.jpg" alt="circleci new ssh key"></a></div></div></div></div><div class="paragraph"><p>After adding the key, you will see its fingerprint on the SSH keys list.</p></div></div></div><div class="sect1"><h2 id="setting-up-github-deployment-key">Setting up GitHub deployment key</h2><div class="sectionbody"><div class="paragraph"><p>Go to your GitHub project&#8217;s settings page, and then go to "Deploy keys" section. Click on the "Add deploy key" button located in the top right corner. Use something like "CircleCI Deployer" in the title field, and paste your public key to the text area. Also, don&#8217;t forget to check the "Allow write access" checkbox.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/circleci-github-deploy-key.jpg"><img src="/images/circleci-github-deploy-key.jpg" alt="circleci github deploy key"></a></div></div></div></div></div></div><div class="sect1"><h2 id="how-to-skip-master-or-gh-pages-branches">How to skip <code>master</code> or <code>gh-pages</code> branches?</h2><div class="sectionbody"><div class="paragraph"><p>We are not done yet. If you run the CircleCI pipeline, you will see that the changes pushed back to the <code>master</code> branch executed the build, and it failed. You need to know that the branch that stores the generated blog does not contain any CircleCI configuration file. To stop building the <code>master</code> branch, we need to put the configuration file into that branch as well.</p></div><div class="paragraph"><p>Let&#8217;s start by creating a simple configuration that ignores the <code>master</code> branch. Here is the <code>source/.circleci/config.yml</code> file we want to put into the branch.</p></div><div class="listingblock"><div class="title">Listing 2. source/.circleci/config.yml</div><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">version: 2jobs:  build:    branches:      ignore: master    docker:      - image: circleci/node:10    steps:      - run:          command: echo 1</code></pre></div></div><div class="paragraph"><p>We are almost there. As the last step, we need to update Hexo&#8217;s configuration file. Without extra configuration, Hexo would skip generating files from the hidden directories. Also, we need to turn off rendering YAML files to JSON files. Add the following two options to your <code>_config.yml</code> file.</p></div><div class="listingblock"><div class="title">Listing 3. _config.yml</div><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">skip_render:  - ".circleci/*"include:  - ".circleci/config.yml"</code></pre></div></div><div class="paragraph"><p>There is one last thing we need to do. Hexo&#8217;s Git deployer ignores hidden files by default. We need to change that, so the <code>.circleci/config.yml</code> file can be deployed to GitHub.</p></div><div class="listingblock"><div class="title">Listing 4. _config.yml</div><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">deploy:  type: git  repo: git@github.com:wololock/wololock.github.io.git  branch: master  <strong>ignore_hidden: false</strong></code></pre></div></div><div class="paragraph"><p>And that&#8217;s it. We can commit changes and add our GitHub repository as a project in the CircleCI.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/circleci-workflow.jpg"><img src="/images/circleci-workflow.jpg" alt="circleci workflow"></a></div></div></div></div></div></div><div class="sect1"><h2 id="conclusion">Conclusion</h2><div class="sectionbody"><div class="paragraph"><p>That&#8217;s all for today. I hope you have learned something useful from this blog post. Here is my question to you: what continuous integration server would you use to deploy a generated static site, and why? Please leave a comment down below. See you next time!</p></div></div></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;paragraph&quot;&gt;&lt;p&gt;I was using Travis CI to execute &lt;a href=&quot;https://travis-ci.org/wololock/wololock.github.io/builds&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;271 builds&lt;/a&gt; and deployments of this blog. Last Friday, I decided to experiment with &lt;a href=&quot;https://circleci.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CircleCI&lt;/a&gt; and see if this could be a viable alternative to my current solution. In this blog post, I will explain why I decided to switch, and how to set up CircleCI to deploy Hexo blog to the GitHub Pages without much hustle.&lt;/p&gt;&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
+    
+    
+      <category term="hexo" scheme="https://e.printstacktrace.blog/tags/hexo/"/>
+    
+      <category term="blogging" scheme="https://e.printstacktrace.blog/tags/blogging/"/>
+    
+      <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
+    
+      <category term="cicd" scheme="https://e.printstacktrace.blog/tags/cicd/"/>
+    
+      <category term="circleci" scheme="https://e.printstacktrace.blog/tags/circleci/"/>
+    
+      <category term="travisci" scheme="https://e.printstacktrace.blog/tags/travisci/"/>
+    
+  </entry>
   
   <entry>
     <title>Building Java and Maven docker images using parallelized Jenkins Pipeline and SDKMAN!</title>
@@ -36,11 +68,11 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
+    
+      <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
       <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
     
@@ -74,11 +106,11 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
+    
+      <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
       <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
     
@@ -146,11 +178,11 @@
     
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
     
+      <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
+    
       <category term="closures" scheme="https://e.printstacktrace.blog/tags/closures/"/>
     
       <category term="tail-recursive" scheme="https://e.printstacktrace.blog/tags/tail-recursive/"/>
-    
-      <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
   </entry>
   
@@ -172,11 +204,11 @@
       <category term="Conferences" scheme="https://e.printstacktrace.blog/categories/conferences/"/>
     
     
-      <category term="grails" scheme="https://e.printstacktrace.blog/tags/grails/"/>
-    
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+    
+      <category term="grails" scheme="https://e.printstacktrace.blog/tags/grails/"/>
     
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
@@ -208,9 +240,9 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
-    
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+    
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
@@ -304,11 +336,11 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="xmx" scheme="https://e.printstacktrace.blog/tags/xmx/"/>
     
@@ -364,13 +396,13 @@
       <category term="Programmer&#39;s Bookshelf" scheme="https://e.printstacktrace.blog/categories/programmer-s-bookshelf/"/>
     
     
+      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
+    
       <category term="book" scheme="https://e.printstacktrace.blog/tags/book/"/>
     
       <category term="review" scheme="https://e.printstacktrace.blog/tags/review/"/>
     
       <category term="reading" scheme="https://e.printstacktrace.blog/tags/reading/"/>
-    
-      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
     
       <category term="pragmatic" scheme="https://e.printstacktrace.blog/tags/pragmatic/"/>
     
@@ -398,9 +430,9 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="graalvm-ee" scheme="https://e.printstacktrace.blog/tags/graalvm-ee/"/>
     
@@ -460,11 +492,11 @@
     
       <category term="git" scheme="https://e.printstacktrace.blog/tags/git/"/>
     
+      <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
+    
       <category term="gpg" scheme="https://e.printstacktrace.blog/tags/gpg/"/>
     
       <category term="intellij-idea" scheme="https://e.printstacktrace.blog/tags/intellij-idea/"/>
-    
-      <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
     
   </entry>
   
@@ -548,13 +580,13 @@
       <category term="Ratpack Cookbook" scheme="https://e.printstacktrace.blog/categories/ratpack-cookbook/"/>
     
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+      <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
     
       <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
     
@@ -580,11 +612,11 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
-    
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="grape" scheme="https://e.printstacktrace.blog/tags/grape/"/>
     
@@ -617,34 +649,6 @@
       <category term="grape" scheme="https://e.printstacktrace.blog/tags/grape/"/>
     
       <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Work - book review</title>
-    <link href="https://e.printstacktrace.blog/deep-work-book-review/"/>
-    <id>https://e.printstacktrace.blog/deep-work-book-review/</id>
-    <published>2018-12-31T15:08:27.000Z</published>
-    <updated>2018-12-31T15:08:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="paragraph"><p>This is the second blog post in <em>"Programmer&#8217;s Bookshelf"</em> category, and today I would like to share with you my opinion on the <em>"Deep Work"</em> book by Cal Newport. It&#8217;s not about programming, but it&#8217;s still beneficial to any software developer out there.</p></div><a id="more"></a><div class="sect1"><h2 id="introduction">Introduction</h2><div class="sectionbody"><div class="paragraph"><p>After first 2 or 3 hours of reading <a href="http://calnewport.com/about/" target="_blank" rel="noopener">Cal Newport</a> "Deep Work" I was under the impression that this book is a manifesto against modern world Internet-oriented society. It argues with the tendency of being always online reachable, continuously exposed to gigabytes of poor quality information, and chasing all possible updates, only because we might miss something important. "Deep Work" encourages to take a few steps back, slow down and think what the most important goals in our life are. In the introductory chapter Cal Newport explains: "This book is best described as an attempt to formalize and explain my attraction to depth over shallowness, and to detail the types of strategies that have helped me act on this attraction.". It&#8217;s important to understand that it is not a silver-bullet or apply-without-questioning kind of book. It&#8217;s author&#8217;s view on the deep work, and he explains it from the specific perspective - a computer science professor at Georgetown University.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/deep-work-book-review-img3.jpg"><img src="/images/deep-work-book-review-img3.jpg" alt="deep work book review img3"></a></div></div></div></div></div></div><div class="sect1"><h2 id="what-is-deep-work">What is Deep Work?</h2><div class="sectionbody"><div class="paragraph"><p>So, what kind of work is deep work? We can find, let&#8217;s say, a formal definition in the book that says: "Professional activities performed in a state of distraction-free concentration that pushes your cognitive capabilities to their limit. These efforts create new value, improve your skill, and are hard to replicate.". But we can also find a more human-friendly and much better suite definition in it: the type of work that optimizes your performance is deep work. If we combine it with the idea of concentrating on the most important and most valuable activities for most of the time, we can see that deep work supports attempts to making our life more meaningful. I&#8217;ve read many reviews which shared the opinion, that this kind of thinking is caused by a selfish lust for power or something similar. I can&#8217;t agree with that. I see bringing more meaning to life a collaborative activity - if we can&#8217;t share our happiness or success with others, the effort we put to progress is pointless. The better we become, the better results we can produce for others.</p></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content"><em>"Deep work is at a severe disadvantage in a technopoly because it builds on values like quality, craftsmanship, and mastery that are decidedly old-fashioned and nontechnological."</em></td></tr></table></div></div></div><div class="sect1"><h2 id="how-to-practice-deep-work">How to practice Deep Work?</h2><div class="sectionbody"><div class="paragraph"><p>The first rule explained in the book focuses on how to work deeply. It starts with an extreme example of Donald Knuth&#8217;s so-called "Monastic Philosophy" where he can dedicate almost 100% of his time to distraction-free and highly-focused work. This type of practice applies to a tiny amount of people worldwide, but there are three more philosophies we can put into action. The first of them called "Bimodal Philosophy" assumes that you can dedicate a significant amount of time during the year to in-depth work (e.g., one or two months a year you take a break from day-to-day practice and during that time you dedicate to the deep work only). The second of them, "The Rhythmic Philosophy" sounds most practical - every regular amount of time (e.g., every day) you dedicate some part of the day to distraction-free deep work. This philosophy is mostly applied to early morning rituals, where you can assign an hour or two to work on something that matters to you most. And the last philosophy Cal Newport describes is called "The Journalistic Philosophy" and he uses Walter Isaacson as an example of a person who can jump into in-depth work mode almost any time he gets inspired. He doesn&#8217;t rate one philosophy over another; it&#8217;s not a competition. It&#8217;s not even a closed list, and it is entirely possible that there are other techniques (or philosophies) that do the work even better. It is mostly about choosing whatever works for us best and taking the best of it.</p></div><div class="openblock text-center"><div class="content"><div class="imageblock img-responsive img-thumbnail"><div class="content"><a class="image" href="/images/deep-work-book-review-img1.jpg"><img src="/images/deep-work-book-review-img1.jpg" alt="deep work book review img1"></a></div></div></div></div></div></div><div class="sect1"><h2 id="is-deep-work-worth-reading">Is "Deep Work" worth reading?</h2><div class="sectionbody"><div class="paragraph"><p>The binary Yes/No answer is - yes. But it depends. I&#8217;ve found "Deep Work" an exciting and practical lecture because it felt like I lost the ability to work with a high level of concentration some time ago. It&#8217;s not revolutionary, and it does not present any ideas you won&#8217;t find in other books, but it still condense many useful and scientific proven information. It might look too wordy, and it could do the same job half size. Also, some of the examples are sound bizarre and very inaccurate (like the ones described with "Embrace boredom" rule). But it doesn&#8217;t change the fact that it presents valuable and useful information to any knowledge-worker.</p></div><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa icon-note" title="Note"></i></td><td class="content">My rating on Goodreads.com - <a href="https://www.goodreads.com/review/show/2647838546" target="_blank" rel="noopener">4/5 stars</a></td></tr></table></div></div></div><div class="sect1"><h2 id="brain-dump-10-ideas-to-remember">Brain dump: 10 ideas to remember</h2><div class="sectionbody"><div class="olist arabic"><ol class="arabic"><li><p>Define what matters to you most and dedicate most of your attention to progress in these areas (career, family, relationships, personal goals).</p></li><li><p>Define what shallow work means to you and minimize the time you spent on it.</p></li><li><p>When doing a shallow job, do it effectively (e.g., batch responding to e-mails in a single time-box).</p></li><li><p>Don&#8217;t let others define your priorities. You don&#8217;t have to reply to every e-mail someone sent you.</p></li><li><p>Be smart. If social media help you achieve your goals, don&#8217;t reject it. Instead, filter all things and activities that don&#8217;t produce ANY value in your life.</p></li><li><p>You have a finite amount of willpower that becomes depleted as you use it.</p></li><li><p>Track and review the progress of the deep work dedicated toward your most important goals.</p></li><li><p>Use shutdown ritual to program your brain that the work for today is done, and it is the right time to rest and relax. Let your subconscious mind do its job.</p></li><li><p>Train your memory with memorization techniques (worth reading: "Moonwalking with Einstein" by Joshua Foer).</p></li><li><p>Challenge yourself by setting deadlines for all activities to overcome Parkinson&#8217;s law. Use 30-minutes buffers in case an important activity was underestimated and you don&#8217;t want to drop it unfinished.</p></li></ol></div></div></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;div class=&quot;paragraph&quot;&gt;&lt;p&gt;This is the second blog post in &lt;em&gt;&quot;Programmer&amp;#8217;s Bookshelf&quot;&lt;/em&gt; category, and today I would like to share with you my opinion on the &lt;em&gt;&quot;Deep Work&quot;&lt;/em&gt; book by Cal Newport. It&amp;#8217;s not about programming, but it&amp;#8217;s still beneficial to any software developer out there.&lt;/p&gt;&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="Programmer&#39;s Bookshelf" scheme="https://e.printstacktrace.blog/categories/programmer-s-bookshelf/"/>
-    
-    
-      <category term="book" scheme="https://e.printstacktrace.blog/tags/book/"/>
-    
-      <category term="review" scheme="https://e.printstacktrace.blog/tags/review/"/>
-    
-      <category term="self-improvement" scheme="https://e.printstacktrace.blog/tags/self-improvement/"/>
-    
-      <category term="non-fiction" scheme="https://e.printstacktrace.blog/tags/non-fiction/"/>
     
   </entry>
   

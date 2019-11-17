@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/using-circleci-to-deploy-hexo-blog-to-github-pages-how-to-set-it-up/</loc>
+        <lastmod>2019-11-17T11:25:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/building-java-and-maven-docker-images-using-parallelized-jenkins-pipeline-and-sdkman/</loc>
         <lastmod>2019-11-13T08:54:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
