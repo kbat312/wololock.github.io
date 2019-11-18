@@ -72,9 +72,9 @@
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
-      <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
-    
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
+    
+      <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
     
       <category term="jenkins" scheme="https://e.printstacktrace.blog/tags/jenkins/"/>
     
@@ -110,9 +110,9 @@
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
-      <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
-    
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
+    
+      <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
     
       <category term="jenkins" scheme="https://e.printstacktrace.blog/tags/jenkins/"/>
     
@@ -174,9 +174,9 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
-    
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
+    
+      <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
     
       <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
@@ -210,11 +210,11 @@
     
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
-      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
-    
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
       <category term="conference" scheme="https://e.printstacktrace.blog/tags/conference/"/>
+    
+      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
     
       <category term="copenhagen" scheme="https://e.printstacktrace.blog/tags/copenhagen/"/>
     
@@ -336,9 +336,9 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
+    
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -580,15 +580,15 @@
       <category term="Ratpack Cookbook" scheme="https://e.printstacktrace.blog/categories/ratpack-cookbook/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
-    
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
+    
+      <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
     
   </entry>
   
