@@ -72,9 +72,9 @@
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
-      <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
-    
       <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
+    
+      <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
     
       <category term="jenkins" scheme="https://e.printstacktrace.blog/tags/jenkins/"/>
     
@@ -110,9 +110,9 @@
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
     
-      <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
-    
       <category term="devops" scheme="https://e.printstacktrace.blog/tags/devops/"/>
+    
+      <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
     
       <category term="jenkins" scheme="https://e.printstacktrace.blog/tags/jenkins/"/>
     
@@ -210,11 +210,11 @@
     
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
+      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
+    
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
       <category term="conference" scheme="https://e.printstacktrace.blog/tags/conference/"/>
-    
-      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
     
       <category term="copenhagen" scheme="https://e.printstacktrace.blog/tags/copenhagen/"/>
     
@@ -396,13 +396,13 @@
       <category term="Programmer&#39;s Bookshelf" scheme="https://e.printstacktrace.blog/categories/programmer-s-bookshelf/"/>
     
     
+      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
+    
       <category term="book" scheme="https://e.printstacktrace.blog/tags/book/"/>
     
       <category term="review" scheme="https://e.printstacktrace.blog/tags/review/"/>
     
       <category term="reading" scheme="https://e.printstacktrace.blog/tags/reading/"/>
-    
-      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
     
       <category term="pragmatic" scheme="https://e.printstacktrace.blog/tags/pragmatic/"/>
     
@@ -584,11 +584,11 @@
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
+      <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
+    
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
-    
-      <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
     
   </entry>
   
