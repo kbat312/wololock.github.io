@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/micronaut-non-blocking-and-async-part1/</loc>
+        <lastmod>2019-11-19T11:21:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/using-circleci-to-deploy-hexo-blog-to-github-pages-how-to-set-it-up/</loc>
         <lastmod>2019-11-17T11:25:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -258,14 +266,6 @@
     <url>
         <loc>https://e.printstacktrace.blog/micronaut-non-blocking-and-async-part-2/</loc>
         <lastmod>2018-10-26T11:40:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/micronaut-non-blocking-and-async-part1/</loc>
-        <lastmod>2018-10-25T00:33:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

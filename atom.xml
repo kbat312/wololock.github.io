@@ -174,9 +174,9 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
-    
       <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
+    
+      <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
     
       <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
@@ -336,9 +336,9 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
@@ -396,11 +396,11 @@
       <category term="Programmer&#39;s Bookshelf" scheme="https://e.printstacktrace.blog/categories/programmer-s-bookshelf/"/>
     
     
-      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
-    
       <category term="book" scheme="https://e.printstacktrace.blog/tags/book/"/>
     
       <category term="review" scheme="https://e.printstacktrace.blog/tags/review/"/>
+    
+      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
     
       <category term="reading" scheme="https://e.printstacktrace.blog/tags/reading/"/>
     
@@ -580,9 +580,9 @@
       <category term="Ratpack Cookbook" scheme="https://e.printstacktrace.blog/categories/ratpack-cookbook/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
