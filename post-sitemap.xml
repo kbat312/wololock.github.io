@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/quicksort-in-groovy-can-it-be-as-fast-as-implemented-in-java/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/graalvm-and-groovy-how-to-start/</loc>
         <lastmod>2019-11-22T21:14:49.000Z</lastmod>
         <changefreq>weekly</changefreq>

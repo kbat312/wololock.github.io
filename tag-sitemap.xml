@@ -3,6 +3,41 @@
 
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/algorithm/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/quicksort/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/java/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
+        <lastmod>2019-11-24T14:11:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/native-image/</loc>
         <lastmod>2019-11-22T21:14:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -11,20 +46,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/graalvm/</loc>
-        <lastmod>2019-11-22T21:14:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/java/</loc>
-        <lastmod>2019-11-22T21:14:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/groovy/</loc>
         <lastmod>2019-11-22T21:14:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -192,13 +213,6 @@
     </url>
 
     <url>
-        <loc>https://e.printstacktrace.blog/tags/benchmark/</loc>
-        <lastmod>2019-06-25T11:54:04.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://e.printstacktrace.blog/tags/jmh/</loc>
         <lastmod>2019-06-25T11:54:04.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -220,6 +234,13 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/grails/</loc>
+        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/conference/</loc>
         <lastmod>2019-06-06T10:03:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -228,13 +249,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/gr8conf/</loc>
-        <lastmod>2019-06-06T10:03:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/grails/</loc>
         <lastmod>2019-06-06T10:03:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -612,6 +626,13 @@
     </url>
 
     <url>
+        <loc>https://e.printstacktrace.blog/tags/haskell/</loc>
+        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://e.printstacktrace.blog/tags/advent-of-code/</loc>
         <lastmod>2018-12-02T16:23:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -620,13 +641,6 @@
 
     <url>
         <loc>https://e.printstacktrace.blog/tags/aoc2018/</loc>
-        <lastmod>2018-12-02T16:23:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://e.printstacktrace.blog/tags/haskell/</loc>
         <lastmod>2018-12-02T16:23:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
