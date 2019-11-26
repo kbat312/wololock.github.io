@@ -64,13 +64,13 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="hexo" scheme="https://e.printstacktrace.blog/tags/hexo/"/>
-    
-      <category term="blogging" scheme="https://e.printstacktrace.blog/tags/blogging/"/>
-    
       <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
     
       <category term="cicd" scheme="https://e.printstacktrace.blog/tags/cicd/"/>
+    
+      <category term="hexo" scheme="https://e.printstacktrace.blog/tags/hexo/"/>
+    
+      <category term="blogging" scheme="https://e.printstacktrace.blog/tags/blogging/"/>
     
       <category term="circleci" scheme="https://e.printstacktrace.blog/tags/circleci/"/>
     
@@ -98,9 +98,9 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
     
@@ -136,9 +136,9 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="sdkman" scheme="https://e.printstacktrace.blog/tags/sdkman/"/>
     
@@ -204,15 +204,15 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
-    
       <category term="jmh" scheme="https://e.printstacktrace.blog/tags/jmh/"/>
-    
-      <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
       <category term="closures" scheme="https://e.printstacktrace.blog/tags/closures/"/>
     
+      <category term="recursion" scheme="https://e.printstacktrace.blog/tags/recursion/"/>
+    
       <category term="tail-recursive" scheme="https://e.printstacktrace.blog/tags/tail-recursive/"/>
+    
+      <category term="benchmark" scheme="https://e.printstacktrace.blog/tags/benchmark/"/>
     
   </entry>
   
@@ -234,19 +234,19 @@
       <category term="Conferences" scheme="https://e.printstacktrace.blog/categories/conferences/"/>
     
     
-      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
+      <category term="grails" scheme="https://e.printstacktrace.blog/tags/grails/"/>
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+      <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
       <category term="conference" scheme="https://e.printstacktrace.blog/tags/conference/"/>
     
-      <category term="grails" scheme="https://e.printstacktrace.blog/tags/grails/"/>
-    
-      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="copenhagen" scheme="https://e.printstacktrace.blog/tags/copenhagen/"/>
+    
+      <category term="micronaut" scheme="https://e.printstacktrace.blog/tags/micronaut/"/>
     
   </entry>
   
@@ -270,13 +270,13 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
-    
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="gr8conf" scheme="https://e.printstacktrace.blog/tags/gr8conf/"/>
     
       <category term="conference" scheme="https://e.printstacktrace.blog/tags/conference/"/>
+    
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="video" scheme="https://e.printstacktrace.blog/tags/video/"/>
     
@@ -342,9 +342,9 @@
     
       <category term="unit-test" scheme="https://e.printstacktrace.blog/tags/unit-test/"/>
     
-      <category term="junit" scheme="https://e.printstacktrace.blog/tags/junit/"/>
-    
       <category term="random" scheme="https://e.printstacktrace.blog/tags/random/"/>
+    
+      <category term="junit" scheme="https://e.printstacktrace.blog/tags/junit/"/>
     
   </entry>
   
@@ -366,11 +366,11 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="xmx" scheme="https://e.printstacktrace.blog/tags/xmx/"/>
     
@@ -430,9 +430,9 @@
     
       <category term="review" scheme="https://e.printstacktrace.blog/tags/review/"/>
     
-      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
-    
       <category term="reading" scheme="https://e.printstacktrace.blog/tags/reading/"/>
+    
+      <category term="learning" scheme="https://e.printstacktrace.blog/tags/learning/"/>
     
       <category term="pragmatic" scheme="https://e.printstacktrace.blog/tags/pragmatic/"/>
     
@@ -460,9 +460,9 @@
       <category term="How to" scheme="https://e.printstacktrace.blog/categories/how-to/"/>
     
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="graalvm-ee" scheme="https://e.printstacktrace.blog/tags/graalvm-ee/"/>
     
@@ -522,11 +522,11 @@
     
       <category term="git" scheme="https://e.printstacktrace.blog/tags/git/"/>
     
-      <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
-    
       <category term="gpg" scheme="https://e.printstacktrace.blog/tags/gpg/"/>
     
       <category term="intellij-idea" scheme="https://e.printstacktrace.blog/tags/intellij-idea/"/>
+    
+      <category term="github" scheme="https://e.printstacktrace.blog/tags/github/"/>
     
   </entry>
   
@@ -610,13 +610,13 @@
       <category term="Ratpack Cookbook" scheme="https://e.printstacktrace.blog/categories/ratpack-cookbook/"/>
     
     
-      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
+      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
-      <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
-    
       <category term="native-image" scheme="https://e.printstacktrace.blog/tags/native-image/"/>
+    
+      <category term="ratpack" scheme="https://e.printstacktrace.blog/tags/ratpack/"/>
     
       <category term="non-blocking" scheme="https://e.printstacktrace.blog/tags/non-blocking/"/>
     
@@ -642,11 +642,11 @@
     
       <category term="groovy" scheme="https://e.printstacktrace.blog/tags/groovy/"/>
     
-      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
-    
       <category term="graalvm" scheme="https://e.printstacktrace.blog/tags/graalvm/"/>
     
       <category term="docker" scheme="https://e.printstacktrace.blog/tags/docker/"/>
+    
+      <category term="java" scheme="https://e.printstacktrace.blog/tags/java/"/>
     
       <category term="grape" scheme="https://e.printstacktrace.blog/tags/grape/"/>
     
